@@ -36,14 +36,9 @@ require("lazy").setup({
             "tyru/open-browser.vim",
             "fladson/vim-kitty",
         },
-        -- import any extras modules here
-        -- { import = "lazyvim.plugins.extras.lang.typescript" },
-        -- { import = "lazyvim.plugins.extras.lang.json" },
-        --{ import = "lazyvim.plugins.extras.ui.mini-animate" },
         -- import/override with your plugins
         { import = "plugins" },
         { import = "plugins.ui" },
-        -- { "zsh-syntax-highlighting" },
         -- disabled plugins
         { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },

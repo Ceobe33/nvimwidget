@@ -12,14 +12,6 @@ vim.o.runtimepath = vim.o.runtimepath .. ",./bookmark.vim"
 map("n", "<leader>pv", vim.cmd.Ex, { desc = "back to vim directory" })
 map("n", "<C-c>", "<Esc>")
 
--- Map("n", "<leader>ps", function()
---     vim.cmd("so")
--- end, { desc = '[P]roject [S]ource' })
-
--- Map("n", "<leader>fm", function()
---     vim.cmd("e ++ff=dos")
--- end, { desc = "[F]ormat ^[M] symbol" })
-
 ------------------------------------------------------------
 -----                     coding                       -----
 ------------------------------------------------------------
@@ -207,7 +199,6 @@ map("n", "<leader>fT", function() Util.terminal.open(nil, { cwd = Util.root.get(
     { desc = "Terminal (root dir)" })
 map("n", "<leader>ft", function() Util.terminal.open(nil, { cwd = vim.fn.expand("%:h") }) end,
     { desc = "Terminal (cwd)" })
--- map("t", "<C-c>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
