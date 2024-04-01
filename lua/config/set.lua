@@ -27,7 +27,7 @@ vim.opt.encoding = "UTF-8"
 -- See `:help vim.o`
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+-- vim.o.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.

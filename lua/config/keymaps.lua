@@ -207,7 +207,7 @@ map("n", "<leader>fT", function() Util.terminal.open(nil, { cwd = Util.root.get(
     { desc = "Terminal (root dir)" })
 map("n", "<leader>ft", function() Util.terminal.open(nil, { cwd = vim.fn.expand("%:h") }) end,
     { desc = "Terminal (cwd)" })
-map("t", "<C-c>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+-- map("t", "<C-c>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })

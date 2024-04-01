@@ -48,6 +48,9 @@ require("lazy").setup({
         { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
         { "nvim-tree/nvim-tree.lua", enabled = false },
+        -- { "neoclide/coc.nvim", enabled = false },
+        -- { "pechorin/any-jump.vim", enabled = false },
+        -- { "preservim/nerdtree", enabled = false },
         -- { "nvim-treesitter/nvim-treesitter", enabled = false },
         -- { "williamboman/mason.nvim",         enabled = false },
         -- { "stevearc/dressing.nvim",          enabled = false },
@@ -61,6 +64,9 @@ require("lazy").setup({
         -- have outdated releases, which may break your Neovim install.
         version = false, -- always use the latest git commit
         -- version = "*", -- try installing the latest stable version for plugins that support semver
+    },
+    ui = {
+        border = "rounded",
     },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
     checker = { enabled = true }, -- automatically check for plugin updates
