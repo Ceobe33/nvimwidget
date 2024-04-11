@@ -7,6 +7,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+---user keymap api
+---@param mode string "n" "v" "i"
+---@param lhs any
+---@param rhs any
+---@param opts any
+---@param isApi any
 function map(mode, lhs, rhs, opts, isApi)
     local keys = require("lazy.core.handler").handlers.keys
     ---@cast keys LazyKeysHandler
@@ -38,14 +44,16 @@ require("lazy").setup({
         },
         -- import/override with your plugins
         { import = "plugins" },
+        { import = "plugins.snippets.luasnippets" },
         { import = "plugins.ui" },
+        { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
         { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
         { "nvim-tree/nvim-tree.lua", enabled = false },
         -- { "neoclide/coc.nvim", enabled = false },
         -- { "pechorin/any-jump.vim", enabled = false },
-        -- { "preservim/nerdtree", enabled = false },
+        -- { "rafamadriz/friendly-snippets", enabled = false },
         -- { "nvim-treesitter/nvim-treesitter", enabled = false },
         -- { "williamboman/mason.nvim",         enabled = false },
         -- { "stevearc/dressing.nvim",          enabled = false },

@@ -26,13 +26,14 @@ return {
                 end,
                 desc = "[f]ind [F]iles (root)",
             },
+            {"<leader>fg", false},
             -- add a keymap to browse plugin files
             -- stylua: ignore
-            -- {
-            --   "<leader>fp",
-            --   function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-            --   desc = "Find Plugin File",
-            -- },
+            {
+              "<leader>fp",
+              function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+              desc = "Find Plugin File",
+            },
         },
         config = function()
             local builtin = require("telescope.builtin")

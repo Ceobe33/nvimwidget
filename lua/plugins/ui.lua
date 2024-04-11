@@ -9,7 +9,7 @@ return {
     -- ui
     {
         "ryanoasis/vim-devicons",
-        event = "LazyFile",
+        event = "VeryLazy",
     },
     -- Better `vim.notify()`
     {
