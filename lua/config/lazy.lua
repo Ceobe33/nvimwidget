@@ -44,7 +44,7 @@ require("lazy").setup({
         },
         -- import/override with your plugins
         { import = "plugins" },
-        { import = "plugins.snippets.luasnippets" },
+        { import = "plugins.snippets" },
         { import = "plugins.ui" },
         { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins

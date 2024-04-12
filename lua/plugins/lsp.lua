@@ -11,6 +11,9 @@ return {
         end,
     },
     {
+        "kevinoid/vim-jsonc",
+    },
+    {
         "nvimtools/none-ls.nvim",
         enabled = false,
         opts = function()

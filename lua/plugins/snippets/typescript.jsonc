@@ -1,0 +1,85 @@
+{
+    // Place your snippets for typescript here. Each snippet is defined under a snippet name and has a prefix, body and
+    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+    // same ids are connected.
+    // Example:
+    "Trace back": {
+        "prefix": "trace",
+        "body": ["console.warn('[Line $TM_LINE_NUMBER] aaronyunfei=====trace back', new Error().stack);"],
+        "description": "trace output to console"
+    },
+    "Print to console": {
+        "prefix": "log",
+        "body": ["console.log('[Line $TM_LINE_NUMBER] aaronyunfei=====$1', $2);"],
+        "description": "Log output to console"
+    },
+    "TODO comment": {
+        "prefix": "todo",
+        "body": ["console.warn('[Line $TM_LINE_NUMBER] [TODO:] aaronyunfei=====$1', $2);"],
+        "description": "Log output to console"
+    },
+    "Print to console": {
+        "prefix": "warn",
+        "body": ["console.warn('[Line $TM_LINE_NUMBER] aaronyunfei=====$1', $2);"],
+        "description": "Log output to console"
+    },
+    "print to ue4": {
+        "prefix": "print",
+        "body": ["console.log(this._PanelObject.GetName(),'$1');", "$2"],
+        "description": "print to ue4"
+    },
+    "@no-blueprint": {
+        "prefix": "@nbp",
+        "body": ["//@no-blueprint"],
+        "description": "配置蓝图不可见"
+    },
+    "FUNC_Net": {
+        "prefix": "@fn",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_Net)"],
+        "description": "RPC Falgs"
+    },
+    "FUNC_NetServer": {
+        "prefix": "@fs",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_NetServer)"],
+        "description": "RPC Falgs"
+    },
+    "FUNC_NetMulticast": {
+        "prefix": "@fm",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_NetMulticast)"],
+        "description": "RPC Falgs"
+    },
+    "FUNC_NetClient": {
+        "prefix": "@fc",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_NetClient)"],
+        "description": "RPC Falgs"
+    },
+    "FUNC_Net|FUNC_NetServer": {
+        "prefix": "@fns",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_Net | rpc.FunctionFlags.FUNC_NetServer)"],
+        "description": "RPC Falgs"
+    },
+    "FUNC_Net|FUNC_NetClient": {
+        "prefix": "@fnc",
+        "body": ["@rpc.flags(rpc.FunctionFlags.FUNC_Net | rpc.FunctionFlags.FUNC_NetClient)"],
+        "description": "RPC Falgs"
+    },
+    // "ToDo": {
+    // 	"prefix": "todo",
+    // 	"body": [
+    // 		"// Todo:Fojunlin($CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE)('$1');",
+    // 	],
+    // 	"description": "Log ToDo"
+    // },
+    "ifret": {
+        "prefix": "ifret",
+        "body": ["if (ret === false) {", "	console.warn(`$1`);", "	return;", "}"],
+        "description": "ifret"
+    },
+    "ifudf": {
+        "prefix": "ifudf",
+        "body": ["if ($1 === undefined) {", "	console.warn(`$2`);", "	return;", "}"],
+        "description": "ifudf"
+    }
+}
+

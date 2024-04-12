@@ -10,6 +10,7 @@ local rep = require("luasnip.extras").rep
 
 require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
 require("luasnip.loaders.from_vscode").load({ paths = { "./snippets" } })
+-- require("luasnip.loaders").reload_file("./lua.lua")
 ls.snippets = {
     -- When trying to expand a snippet, luasnip first searches the tables for
     -- each filetype specified in 'filetype' followed by 'all'.
