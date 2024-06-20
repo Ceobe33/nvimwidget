@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    -- keys = { { "S", false } },
     opts = function(_, opts)
         -- add tsx and treesitter
         -- require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }

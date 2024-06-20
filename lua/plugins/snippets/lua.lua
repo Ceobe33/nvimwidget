@@ -34,7 +34,7 @@ ls.snippets = {
     --     ),
     -- },
     lua = {
-        s("aaron", fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
+        s({ filetype = "lua", trig = "aaron" }, fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
     },
     all = {
         -- trigger is fn.
@@ -61,4 +61,5 @@ ls.snippets = {
 print("sth logic in lua $TM_FILE")
 return {
     -- lf = { fmt("local {} = require('{}')", { i(1, "default"), rep(1) }) },
+    -- s({ filetype = "lua", trig = "aaron" }, fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
 }

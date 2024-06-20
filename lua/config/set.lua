@@ -12,6 +12,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.autoindent = true
 
 vim.opt.smartindent = true
 
@@ -19,7 +20,10 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 3
+-- vitical scroll, cursor pos over border
+vim.opt.scrolloff = 8
+-- horizontal scroll, cursor pos over side
+vim.opt.sidescrolloff = 15
 
 vim.opt.encoding = "UTF-8"
 

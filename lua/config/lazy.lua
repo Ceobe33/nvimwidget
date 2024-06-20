@@ -48,7 +48,7 @@ require("lazy").setup({
         { import = "plugins.ui" },
         { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
-        { "lervag/vimtex", enabled = false },
+        -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
         { "nvim-tree/nvim-tree.lua", enabled = false },
         -- { "neoclide/coc.nvim", enabled = false },
@@ -58,6 +58,7 @@ require("lazy").setup({
         -- { "williamboman/mason.nvim",         enabled = false },
         -- { "stevearc/dressing.nvim",          enabled = false },
         -- { "folke/noice.nvim", enabled = false },
+        { "saadparwaiz1/cmp_luasnip", enabled = false },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -72,7 +73,7 @@ require("lazy").setup({
         border = "rounded",
     },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
-    checker = { enabled = true }, -- automatically check for plugin updates
+    checker = { enabled = true, notify = false }, -- automatically check for plugin updates
     performance = {
         rtp = {
             -- disable some rtp plugins
