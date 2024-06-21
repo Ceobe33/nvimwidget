@@ -2,6 +2,13 @@ return {
     {
         "pechorin/any-jump.vim",
     },
+    {
+        "folke/neodev.nvim",
+        --Please disable `neodev.nvim` in your config.
+        --This is no longer needed when you use `lazydev.nvim`
+        enabled = false,
+        opts = {},
+    },
     { -- coc
         "neoclide/coc.nvim",
         enabled = true,
