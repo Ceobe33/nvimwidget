@@ -255,7 +255,7 @@ return {
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
-        -- optional = true,
+        optional = true,
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
             local logo = [[
@@ -358,7 +358,7 @@ return {
     },
 
     -- icons
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "ryanoasis/vim-devicons", lazy = true },
 
     -- ui components
     { "MunifTanjim/nui.nvim", lazy = true },

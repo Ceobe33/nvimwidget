@@ -1,3 +1,6 @@
+-- temporary solve `undefined global 'vim'`
+vim = vim
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
@@ -50,7 +53,6 @@ require("lazy").setup({
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-        { "nvim-tree/nvim-tree.lua", enabled = false },
         -- { "neoclide/coc.nvim", enabled = false },
         -- { "pechorin/any-jump.vim", enabled = false },
         -- { "rafamadriz/friendly-snippets", enabled = false },
