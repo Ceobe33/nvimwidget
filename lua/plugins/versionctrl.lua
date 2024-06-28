@@ -1,7 +1,7 @@
 return {
     { -- gitsigns.nvim
         "lewis6991/gitsigns.nvim",
-        enabled = true,
+        enabled = false,
         requires = {
             -- {
             --     "neovim/nvim-lspconfig",

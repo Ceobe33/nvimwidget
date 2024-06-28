@@ -47,7 +47,7 @@ require("lazy").setup({
         },
         -- import/override with your plugins
         { import = "plugins" },
-        { import = "plugins.snippets" },
+        -- { import = "plugins.snippets" },
         { import = "plugins.ui" },
         { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
@@ -92,3 +92,5 @@ require("lazy").setup({
         },
     },
 })
+
+-- require("luasnip.loaders.from_vscode").load({ paths = { "../../snippets/" } })

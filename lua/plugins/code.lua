@@ -1,13 +1,13 @@
-local list_snips = function()
-    local ft_list = require("luasnip").available()[vim.o.filetype]
-    local ft_snips = {}
-    for _, item in pairs(ft_list) do
-        ft_snips[item.trigger] = item.name
-    end
-    print(vim.inspect(ft_snips))
-end
-
-vim.api.nvim_create_user_command("SnipList", list_snips, {})
+-- local list_snips = function()
+--     local ft_list = require("luasnip").available()[vim.o.filetype]
+--     local ft_snips = {}
+--     for _, item in pairs(ft_list) do
+--         ft_snips[item.trigger] = item.name
+--     end
+--     print(vim.inspect(ft_snips))
+-- end
+--
+-- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
     -- {
     --     "echasnovski/mini.comment",
@@ -47,7 +47,8 @@ return {
         build = "make install_jsregexp",
         dependencies = { "rafamadriz/friendly-snippets" },
         opts = function()
-            require("luasnip").filetype_extend("typescript", { "javascript" })
+            -- require("luasnip").filetype_extend("typescript", { "javascript" })
+            -- require("luasnip.loaders.from_vscode").load({ path = { "./snippets/" } })
             -- require("luasnip.loaders.from_vscode").lazy_load()
             -- require("luasnip.loaders.from_lua").load({ path = { "./snippets" } })
         end,
