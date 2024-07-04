@@ -47,9 +47,10 @@ require("lazy").setup({
         },
         -- import/override with your plugins
         { import = "plugins" },
+        { import = "plugins.lsp" },
         -- { import = "plugins.snippets" },
         { import = "plugins.ui" },
-        { import = "lazyvim.plugins.extras.ui.alpha" },
+        -- { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },

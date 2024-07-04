@@ -7,6 +7,7 @@ vim.g.NERDTreeShowLineNumbers = 1
 -- set directory width
 vim.g.NERDTreeWinSize = 40
 
+vim.g.NERDTreeChDirMode = 2
 --[[
 --"文件树
 Plug 'scrooloose/nerdtree'

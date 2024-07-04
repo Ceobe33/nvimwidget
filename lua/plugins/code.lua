@@ -25,6 +25,22 @@ return {
     --     },
     -- },
     {
+        "stevearc/conform.nvim",
+        opts = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    lua = { "stylua" },
+                    -- Conform will run multiple formatters sequentially
+                    python = { "isort", "black" },
+                    -- Use a sub-list to run only the first available formatter
+                    javascript = { { "prettierd", "prettier" } },
+                    cpp = { "clang-format" },
+                    ["*"] = { "codespell" },
+                },
+            })
+        end,
+    },
+    {
         -- " post install (yarn install | npm install) then load plugin only for editing supported files
         -- Plug 'prettier/vim-prettier', {
         --   \ 'do': 'yarn install --frozen-lockfile --production',
