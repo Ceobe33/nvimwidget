@@ -8,6 +8,9 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
     group = augroup("AutoSave"),
     callback = function()
         if vim.bo.modified then
+            -- 转换换行符为 CRLF
+            vim.cmd([[silent! %s/\r\n/\r/g]])
+            vim.cmd([[silent! %s/\n\r/\r/g]])
             vim.cmd("w")
         end
     end,
