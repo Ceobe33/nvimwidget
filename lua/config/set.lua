@@ -1,7 +1,7 @@
 -- session
 vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 --vim.opt.guicursor = ""
-vim.opt.guifont = "Fira_Code_Font"
+-- vim.opt.guifont = "Fira_Code_Font"
 
 vim.opt.number = true
 -- Make line numbers default

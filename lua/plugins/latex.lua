@@ -35,6 +35,9 @@ return {
     --
     {
         "preservim/vim-markdown",
+        requires = {
+            { "godlygeek/tabular" },
+        },
     },
     -- install without yarn or npm
     {

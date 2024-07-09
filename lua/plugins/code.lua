@@ -31,11 +31,19 @@ return {
                 formatters_by_ft = {
                     lua = { "stylua" },
                     -- Conform will run multiple formatters sequentially
-                    python = { "isort", "black" },
+                    python = function(bufnr)
+                        if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                            return { "ruff_format" }
+                        else
+                            return { "isort", "black" }
+                        end
+                    end,
                     -- Use a sub-list to run only the first available formatter
                     javascript = { { "prettierd", "prettier" } },
                     cpp = { "clang-format" },
+                    tex = { "latexindent" },
                     ["*"] = { "codespell" },
+                    ["_"] = { "trim_whitespace" },
                 },
             })
         end,

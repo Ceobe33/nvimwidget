@@ -49,7 +49,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 -- vim dev icons
 -- loading the plugin
-vim.g.webdevicons_enable = 1
+-- vim.g.webdevicons_enable = 1
 
 -- adding the flags to NERDTree
-vim.g.webdevicons_enable_nerdtree = 1
+-- vim.g.webdevicons_enable_nerdtree = 1

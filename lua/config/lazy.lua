@@ -54,6 +54,7 @@ require("lazy").setup({
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+        { "echasnovski/mini.icons", enabled = false },
         -- { "neoclide/coc.nvim", enabled = false },
         -- { "pechorin/any-jump.vim", enabled = false },
         -- { "rafamadriz/friendly-snippets", enabled = false },
