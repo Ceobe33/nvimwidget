@@ -35,18 +35,20 @@ return {
     --
     {
         "preservim/vim-markdown",
+        enabled = false,
         requires = {
             { "godlygeek/tabular" },
         },
     },
-    -- install without yarn or npm
+    -- instanll with yarn or npm
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function()
-            vim.fn["mkdp#util#install"]()
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
         end,
+        ft = { "markdown" },
     },
 }
 --[[

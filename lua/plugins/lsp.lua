@@ -11,7 +11,7 @@ return {
     },
     { -- coc
         "neoclide/coc.nvim",
-        enabled = true,
+        -- enabled = false,
         branch = "release",
         config = function()
             -- map("n", "<leader>pv", vim.cmd.Ex, { desc = "back to vim directory" })
