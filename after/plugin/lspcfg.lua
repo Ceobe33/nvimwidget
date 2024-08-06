@@ -44,10 +44,10 @@ lspconfig.lua_ls.setup({
 })
 print("here is lspcfg")
 ]]
-require("luasnip.loaders.from_vscode").load({ paths = { "./snippets/" } })
 do
     return
 end
+require("luasnip.loaders.from_vscode").load({ paths = { "./snippets/" } })
 
 local ls = require("luasnip")
 -- some shorthands...

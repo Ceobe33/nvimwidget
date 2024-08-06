@@ -9,6 +9,19 @@
 --
 -- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
+    -- snippets
+    {
+        "SirVer/ultisnips",
+        -- enabled = false,
+
+        config = function()
+            vim.g.UltiSnipsExpandTrigger = "<tab>"
+            vim.g.UltiSnipsJumpForwardTrigger = "<c-f>"
+            vim.g.UltiSnipsJumpBackwardTrigger = "<c-b>"
+            vim.g.UltiSnipsEditSplit = "vertical"
+        end,
+    },
+    { "honza/vim-snippets" },
     -- {
     --     "echasnovski/mini.comment",
     --     event = "VeryLazy",

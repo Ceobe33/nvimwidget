@@ -2,10 +2,15 @@
 return {
     {
         "nvim-telescope/telescope-fzf-native.nvim",
+        enabled = false,
         build = "make",
     },
     { -- telescope
         "nvim-telescope/telescope.nvim",
+        requires = {
+            -- All the lua functions I don't want to write twice.
+            { "nvim-lua/plenary.nvim" },
+        },
         keys = {
             {
                 "<leader>ff",
@@ -26,7 +31,7 @@ return {
                 end,
                 desc = "[f]ind [F]iles (root)",
             },
-            {"<leader>fg", false},
+            { "<leader>fg", false },
             -- add a keymap to browse plugin files
             -- stylua: ignore
             {

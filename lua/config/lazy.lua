@@ -48,21 +48,40 @@ require("lazy").setup({
         -- import/override with your plugins
         { import = "plugins" },
         { import = "plugins.lsp" },
-        -- { import = "plugins.snippets" },
-        { import = "plugins.ui" },
-        -- { import = "lazyvim.plugins.extras.ui.alpha" },
+        { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
         { "echasnovski/mini.icons", enabled = false },
-        -- { "neoclide/coc.nvim", enabled = false },
-        -- { "pechorin/any-jump.vim", enabled = false },
-        -- { "rafamadriz/friendly-snippets", enabled = false },
-        -- { "nvim-treesitter/nvim-treesitter", enabled = false },
-        -- { "williamboman/mason.nvim",         enabled = false },
-        -- { "stevearc/dressing.nvim",          enabled = false },
-        -- { "folke/noice.nvim", enabled = false },
+        -- basic snippet
+        { "garymjr/nvim-snippets", enabled = false },
+        { "rafamadriz/friendly-snippets", enabled = false },
+        { "L3MON4D3/LuaSnip", enabled = false },
         { "saadparwaiz1/cmp_luasnip", enabled = false },
+
+        { "pechorin/any-jump.vim", enabled = false },
+        { "hrsh7th/cmp-nvim-lsp", enabled = false },
+
+        { "echasnovski/mini.ai", enabled = false },
+        { "mfussenegger/nvim-lint", enabled = false },
+        { "SmiteshP/nvim-navic", enabled = false },
+
+        { "folke/lazydev.nvim", enabled = false },
+        { "folke/ts-comments.nvim", enabled = false },
+
+        { "hrsh7th/nvim-cmp", enabled = false },
+        -- { "williamboman/mason-lspconfig.nvim", enabled = false },
+        { "folke/persistence.nvim", enabled = false },
+        { "windwp/nvim-ts-autotag", enabled = false },
+        { "tyru/open-browser.vim", enabled = false },
+        { "echasnovski/mini.indentscope", enabled = false },
+        { "echasnovski/mini.pairs", enabled = false },
+        { "liuchengxu/vista.vim" },
+
+        -- { "folke/noice.nvim", enabled = false },
+        -- { "folke/noice.nvim", enabled = false },
+        -- { "folke/noice.nvim", enabled = false },
+        -- { "folke/noice.nvim", enabled = false },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

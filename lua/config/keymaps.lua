@@ -4,7 +4,7 @@
 
 vim.g.mapleader = " "
 -- vim.g.vimspector_enable_mapping = "VISUAL_STUDIO"
-vim.g.loaded_python3_provider = 0
+-- vim.g.loaded_python3_provider = 0
 vim.o.runtimepath = vim.o.runtimepath .. ",./bookmark.vim"
 --local opt = { noremap = true, silent = true }
 

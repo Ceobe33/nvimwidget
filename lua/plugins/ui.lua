@@ -1,4 +1,6 @@
 return {
+    -- Soothing pastel theme for (Neo)vim
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     -- to fixget_signs( tbl_map ) error
     {
         "lewis6991/gitsigns.nvim",
@@ -14,6 +16,7 @@ return {
     -- Better `vim.notify()`
     {
         "rcarriga/nvim-notify",
+        enabled = false,
         keys = {
             {
                 "<leader>un",
@@ -361,5 +364,9 @@ return {
     { "ryanoasis/vim-devicons", lazy = true },
 
     -- ui components
-    { "MunifTanjim/nui.nvim", lazy = true },
+    {
+        "MunifTanjim/nui.nvim",
+        -- enabled = false,
+        lazy = true,
+    },
 }
