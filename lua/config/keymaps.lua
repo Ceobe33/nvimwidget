@@ -217,5 +217,5 @@ map("n", "<leader>bnv", "<cmd>vsplit new<cr>", { desc = "Buffer vsplit(keymaps)"
 
 
 vim.cmd([[
-        source ./keymaps.vim
+        source ~/.config/nvim/lua/config/keymaps.vim
         ]])
