@@ -360,9 +360,6 @@ return {
         end,
     },
 
-    -- icons
-    { "ryanoasis/vim-devicons", lazy = true },
-
     -- ui components
     {
         "MunifTanjim/nui.nvim",
