@@ -1,10 +1,12 @@
 
 # regular review in nvim again
 
+[RESULT](#stage-3)  
+
 [1. why(trigger)](#rigger-event)  
 [2. how(figure out problem)](#solve-problem)  
 [3. ope(confuse operating in progress)](#confuse)  
-[4. get(get something in this trip)](#getting)
+[4. get(get something in this trip)](#getting)  
 
 ## trigger event
 
@@ -81,12 +83,72 @@ and this try, redirect me to the regular expression
 
 > 了解了您的需求，如果 “e” 和 “d” 都是可能的盘符，并且您想要将它们都替换为对应的盘符路径（例如 e:/ 和 d:/）,以下是如何做到这一点的示例：  
 > ```vim
-> local original_path = vim.fn.expand("%:p")
+> let original_path = expand("%:p")
+> " 使用 substitute 进行全局替换
+> let modified_path = substitute(original_path, '^/mnt/\\(e\\|d\\)/', '\=submatch(1):upper() . ":/"', 'g')
+> ```
+到了这里就导向了错误的方向，其实我是知道`\0`, `\1` 是使用前一个匹配结果作为输入项，但是这里忘记了  
+`submatch()` 官方文档是用来计算, 完了会在结尾追加换行 :/
+> ```txt
+> " :h(elp) submatch()
+> submatch({nr} [, {list}])                                      *submatch()* *E935*
+> 		Only for an expression in a |:substitute| command or
+> 		substitute() function.
+> 		Returns the {nr}th submatch of the matched text.  When {nr}
+> 		is 0 the whole matched text is returned.
+> 		Note that a NL in the string can stand for a line break of a
+> 		multi-line match or a NUL character in the text.
+> 		Also see |sub-replace-expression|.  
+>
+> 		If {list} is present and non-zero then submatch() returns
+> 		a list of strings, similar to |getline()| with two arguments.
+> 		NL characters in the text represent NUL characters in the
+> 		text.
+> 		Only returns more than one item for |:substitute|, inside
+> 		|substitute()| this list will always contain one or zero
+> 		items, since there are no real line breaks.
 > 
-> -- 使用gsub进行全局替换
-> local modified_path = original_path:gsub("^/mnt/([ed])/(", function(drive)
->   return drive:upper() .. ":/"
-> end)
+> 		When substitute() is used recursively only the submatches in
+> 		the current (deepest) call can be obtained.
+> 
+> 		Returns an empty string or list on error.
+> 
+> 		Examples: 
+> 			s/\d\+/\=submatch(0) + 1/
+> 			echo substitute(text, '\d\+', '\=submatch(0) + 1', '')
+> 		This finds the first number in the line and adds one to it.
+> 		A line break is included as a newline character.
+>```
+
+在错误方向浪费了一些时间,不过这个经历会成为一个解决之后问题的"index"  
+提供快速解决问题的"灵光一闪"
+
+### stage 3
+
+找到解决方法之后,很快就写出了对应的方法, 到最后 很有成就感 :)  
+
+> ```vim
+> "这样复制到 X 主选择区
+> "let @*=expand('%')
+> "把 @* 换成 @+ 就是剪贴板。
+> 
+> function! g:CpFileEntryToClipBoardNoLineWin()
+> let original_path = expand("%:p")
+> let modified_path = substitute(original_path, '^/mnt/\(\w\)', '\1:', '')
+> "echo modified_path
+> let @+ = modified_path
+> endfunction
+> silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoardNoLineWin()
+> 
+> function! g:CpFileEntryToClipBoardNoLine()
+> let @+ = expand("%:p")
+> endfunction
+> silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoardNoLine()
+> 
+> function! g:CpFileEntryToClipBoard()
+> let @+ = expand("%:p").'|'.line(".")
+> endfunction
+> silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoard()
 > ```
 
 ## confuse
@@ -94,3 +156,5 @@ and this try, redirect me to the regular expression
 ## getting
 
 regular in vim, `substitute`, `submatch()` keywords
+
+vim function must use capital character as function name the first character

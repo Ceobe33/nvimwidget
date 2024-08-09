@@ -6,7 +6,7 @@
 function! g:CpFileEntryToClipBoardNoLineWin()
 let original_path = expand("%:p")
 let modified_path = substitute(original_path, '^/mnt/\(\w\)', '\1:', '')
-echo modified_path
+"echo modified_path
 let @+ = modified_path
 endfunction
 silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoardNoLineWin()
