@@ -53,6 +53,7 @@ return {
     config = function()
         -- Options should be set before colorscheme
         -- vim.cmd.colorscheme("tokyonight")
-        vim.cmd.colorscheme("tokyonight-moon")
+        -- vim.cmd.colorscheme("tokyonight-moon")
+        vim.cmd.colorscheme("rose-pine")
     end,
 }

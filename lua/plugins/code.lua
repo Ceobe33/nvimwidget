@@ -19,6 +19,7 @@ return {
             vim.g.UltiSnipsJumpForwardTrigger = "<c-f>"
             vim.g.UltiSnipsJumpBackwardTrigger = "<c-b>"
             vim.g.UltiSnipsEditSplit = "vertical"
+            vim.g.UltiSnipsSnippetDirectories = { "~/.config/nvim/after/plugin/snippets" }
         end,
     },
     { "honza/vim-snippets" },
@@ -77,15 +78,19 @@ return {
     },
     {
         "L3MON4D3/LuaSnip",
-        -- enabled = false,
+        enabled = false,
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        opts = function()
+        -- dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
             -- require("luasnip").filetype_extend("typescript", { "javascript" })
             -- require("luasnip.loaders.from_vscode").load({ path = { "./snippets/" } })
+            -- require("luasnip.loaders.from_vscode").load({ paths = { "./snippets" } })
+            -- require("luasnip.loaders.from_vscode").load_standalone({
+            --     path = { "~/.config/nvim/after/plugin/snippets/typescript.code-snippets" },
+            -- })
             -- require("luasnip.loaders.from_vscode").lazy_load()
             -- require("luasnip.loaders.from_lua").load({ path = { "./snippets" } })
         end,

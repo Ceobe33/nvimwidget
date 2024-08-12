@@ -229,7 +229,13 @@ return {
     -- noicer ui
     {
         "folke/noice.nvim",
+        -- enabled = false,
         event = "VeryLazy",
+        dependencies = {
+            { "MunifTanjim/nui.nvim" },
+
+            { "rcarriga/nvim-notify" },
+        },
         opts = {
             lsp = {
                 override = {
@@ -257,8 +263,8 @@ return {
     -- dashboard
     {
         "goolord/alpha-nvim",
-        event = "VimEnter",
-        optional = true,
+        -- event = "VimEnter",
+        -- optional = true,
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
             local logo = [[
@@ -300,6 +306,7 @@ return {
                 dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
                 dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
                 dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
+                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
                 dashboard.button("q", " " .. " Quit", ":qa<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
@@ -358,12 +365,5 @@ return {
                 icons = require("lazyvim.config").icons.kinds,
             }
         end,
-    },
-
-    -- ui components
-    {
-        "MunifTanjim/nui.nvim",
-        -- enabled = false,
-        lazy = true,
     },
 }
