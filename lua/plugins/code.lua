@@ -9,6 +9,7 @@
 --
 -- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
+    { "ahonn/vim-fileheader" },
     -- snippets
     {
         "SirVer/ultisnips",
