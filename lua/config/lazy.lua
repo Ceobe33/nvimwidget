@@ -44,6 +44,7 @@ require("lazy").setup({
 
             "tyru/open-browser.vim",
             "fladson/vim-kitty",
+            "stevearc/profile.nvim",
         },
         -- import/override with your plugins
         { import = "plugins" },
