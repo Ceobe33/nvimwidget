@@ -5,6 +5,8 @@
 vim.g.mapleader = " "
 -- vim.g.vimspector_enable_mapping = "VISUAL_STUDIO"
 -- vim.g.loaded_python3_provider = 0
+
+vim.g.python3_host_prog = "/home/aaron/.pyenv/versions/3.10.14/bin/python3"
 vim.o.runtimepath = vim.o.runtimepath .. ",./bookmark.vim"
 --local opt = { noremap = true, silent = true }
 
