@@ -1,7 +1,7 @@
 " @Author: Coebe <youareaaron0@gmail.com>
 " @Date: 2024-08-09 10:23:36
 " @Last Modified by: v_yunfeiyin <youareaaron0@gmail.com>
-" @Last Modified time: 2024-08-09 10:41:09
+" @Last Modified time: 2024-08-26 13:30:05
 
 
 "这样复制到 X 主选择区
@@ -57,3 +57,13 @@ let g:fileheader_delimiter_map = {
    "\ '@Desc: 通用货币栏子元素',
    \ ]
    \ }
+
+"function! s:JbzCppMan()
+"    let old_isk = &iskeyword
+"    setl iskeyword+=:
+"    let str = expand("<cword>")
+"    let &l:iskeyword = old_isk
+"    execute 'cppman ' . str
+"endfunction
+"command! JbzCppMan :call s:JbzCppMan()
+"au FileType cpp nnoremap <buffer>K :JbzCppMan<CR>

@@ -2,10 +2,10 @@
 
 ## requirements
 
-- dkms
-  `sudo apt-get update && sudo apt-get upgrade -y`
+- dkms  
+  `sudo apt-get update && sudo apt-get upgrade -y`  
   `sudo apt install dkms`
-- ofed
+- ofed  
   [ofed-ubuntu.sh-github](https://gist.github.com/noslin005/b0d315c814cd1cb37a7aafdae5df4ef0)
 
   ```sh
@@ -52,6 +52,8 @@
 
   `sudo chmod +x ofed-ubuntu.sh`  
   `sudo ./ofed-ubuntu.sh`
+- yaml  
+  `python -m pip install PyYAML`
 
 
 ## cuda install

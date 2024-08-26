@@ -33,6 +33,22 @@ function map(mode, lhs, rhs, opts, isApi)
     end
 end
 
+---@param package_name string
+function InstallPackages(package_name)
+    -- 构建安装命令
+    local install_command = "sudo apt-get install -y " .. package_name
+
+    -- 执行安装命令
+    local success = os.execute(install_command)
+
+    -- 检查命令是否成功执行
+    if success == 0 then
+        print(package_name .. " 安装成功")
+    else
+        print(package_name .. " 安装失败")
+    end
+end
+
 require("lazy").setup({
     spec = {
         -- add LazyVim and import its plugins
@@ -76,7 +92,6 @@ require("lazy").setup({
         { "tyru/open-browser.vim", enabled = false },
         { "echasnovski/mini.indentscope", enabled = false },
         { "echasnovski/mini.pairs", enabled = false },
-        { "liuchengxu/vista.vim" },
 
         -- { "folke/noice.nvim", enabled = false },
         -- { "folke/noice.nvim", enabled = false },

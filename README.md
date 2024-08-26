@@ -10,6 +10,10 @@ need to put this repo into
 
 ### requirement
 
+- cppman
+  `$ sudo apt install cppman`
+- ctags
+  `$ sudo apt install universal-ctags -y`
 - lazygit
   1. **(recommanded)** [lazyvim github<go>](https://github.com/jesseduffield/lazygit#ubuntu:~:text=%3DJesseDuffield.lazygit-,Manual,-You%27ll%20need%20to)
   ```shell

@@ -9,7 +9,39 @@
 --
 -- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
-    { "ahonn/vim-fileheader" },
+    -- c++ syntax highlighting
+    {
+        "bfrg/vim-cpp-modern",
+
+        -- cppman for cppreference document
+        config = function()
+            -- map("n", "K", function()
+            --     local old_isk = vim.bo.iskeyword
+            --     vim.bo.iskeyword = old_isk .. ",:"
+            --     local str = vim.fn.expand("<cword>")
+            --     vim.bo.iskeyword = old_isk
+            --     -- os.execute("cppman " .. str)
+            --     -- vim.cmd("cppman " .. str)
+            --     -- vim.cmd("command! -nargs=0 Cppman" .. str)
+            -- end)
+        end,
+    },
+
+    -- Exploring source file structure with vista.vim
+    -- { "liuchengxu/vista.vim" },
+    { "preservim/tagbar" },
+    -- tag generate
+    { "ludovicchabant/vim-gutentags" },
+
+    {
+        "ahonn/vim-fileheader",
+        config = function()
+            vim.g.gutentags_ctags_exclude_wildignore = 1
+            vim.g.gutentags_ctags_exclude = [[
+  \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
+  \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui']]
+        end,
+    },
     -- snippets
     {
         "SirVer/ultisnips",
