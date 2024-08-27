@@ -9,6 +9,16 @@
 --
 -- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
+    -- switch within cpp & h files
+    {
+        "derekwyatt/vim-fswitch",
+        config = function()
+            map("n", "<leader>oh", ":FSSplitLeft<CR>", { desc = "open source/header on left" })
+            map("n", "<leader>ol", ":FSSplitRight<CR>", { desc = "open source/header on right" })
+            map("n", "<leader>ok", ":FSSplitAbove<CR>", { desc = "open source/header on above" })
+            map("n", "<leader>oj", ":FSSplitBelow<CR>", { desc = "open source/header on below" })
+        end,
+    },
     -- c++ syntax highlighting
     {
         "bfrg/vim-cpp-modern",
@@ -73,6 +83,7 @@ return {
     -- },
     {
         "stevearc/conform.nvim",
+        enabled = false,
         opts = function()
             require("conform").setup({
                 formatters_by_ft = {
