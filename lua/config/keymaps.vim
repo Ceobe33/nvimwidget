@@ -1,30 +1,31 @@
 " @Author: Coebe <youareaaron0@gmail.com>
 " @Date: 2024-08-09 10:23:36
-" @Last Modified by: v_yunfeiyin <youareaaron0@gmail.com>
-" @Last Modified time: 2024-08-27 17:58:47
+" @Last Modified by: aaron <youareaaron0@gmail.com>
+" @Last Modified time: 2024-08-28 11:59:59
 
 
 "这样复制到 X 主选择区
 "let @*=expand('%')
 "把 @* 换成 @+ 就是剪贴板。
 
-function! g:CpFileEntryToClipBoardNoLineWin()
+function! s:CpFileEntryToClipBoardNoLineWin()
 let original_path = expand("%:p")
 let modified_path = substitute(original_path, '^/mnt/\(\w\)', '\1:', '')
 "echo modified_path
+"echo original_path
 let @+ = modified_path
 endfunction
-silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoardNoLineWin()
+silent! command -nargs=0  CopyWin :call s:CpFileEntryToClipBoardNoLineWin()
 
 function! g:CpFileEntryToClipBoardNoLine()
 let @+ = expand("%:p")
 endfunction
-silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoardNoLine()
+silent! command -nargs=0 CopyNLN call g:CpFileEntryToClipBoardNoLine()
 
 function! g:CpFileEntryToClipBoard()
 let @+ = expand("%:p").'|'.line(".")
 endfunction
-silent! command -nargs=0 CopyEntry call g:CpFileEntryToClipBoard()
+silent! command -nargs=0 Copy2CB call g:CpFileEntryToClipBoard()
 
 
 " file header config
