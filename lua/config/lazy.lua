@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 ---@param rhs any
 ---@param opts any
 ---@param isApi any
-function map(mode, lhs, rhs, opts, isApi)
+function Map(mode, lhs, rhs, opts, isApi)
     local keys = require("lazy.core.handler").handlers.keys
     ---@cast keys LazyKeysHandler
     -- do not create the keymap if a lazy keys handler exists

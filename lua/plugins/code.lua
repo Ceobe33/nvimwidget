@@ -13,10 +13,10 @@ return {
     {
         "derekwyatt/vim-fswitch",
         config = function()
-            map("n", "<leader>oh", ":FSSplitLeft<CR>", { desc = "open source/header on left" })
-            map("n", "<leader>ol", ":FSSplitRight<CR>", { desc = "open source/header on right" })
-            map("n", "<leader>ok", ":FSSplitAbove<CR>", { desc = "open source/header on above" })
-            map("n", "<leader>oj", ":FSSplitBelow<CR>", { desc = "open source/header on below" })
+            Map("n", "<leader>oh", ":FSSplitLeft<CR>", { desc = "open source/header on left" })
+            Map("n", "<leader>ol", ":FSSplitRight<CR>", { desc = "open source/header on right" })
+            Map("n", "<leader>ok", ":FSSplitAbove<CR>", { desc = "open source/header on above" })
+            Map("n", "<leader>oj", ":FSSplitBelow<CR>", { desc = "open source/header on below" })
         end,
     },
     -- c++ syntax highlighting
@@ -38,20 +38,33 @@ return {
     },
 
     -- Exploring source file structure with vista.vim
-    -- { "liuchengxu/vista.vim" },
-    { "preservim/tagbar" },
+    {
+        "liuchengxu/vista.vim",
+        config = function()
+            Map('n', '<leader>cv', ':Vista!!<CR>', { desc = 'toggle vista outlines' })
+        end
+    },
+    -- { "preservim/tagbar" },
+    {
+        'simrat39/symbols-outline.nvim',
+        enabled = false,
+        opts = function()
+            require("symbols-outline").setup()
+        end
+
+    },
     -- tag generate
     { "ludovicchabant/vim-gutentags" },
 
-    {
-        "ahonn/vim-fileheader",
-        config = function()
-            vim.g.gutentags_ctags_exclude_wildignore = 1
-            vim.g.gutentags_ctags_exclude = [[
-  \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
-  \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui']]
-        end,
-    },
+  --   {
+  --       "ahonn/vim-fileheader",
+  --       config = function()
+  --           vim.g.gutentags_ctags_exclude_wildignore = 1
+  --           vim.g.gutentags_ctags_exclude = [[
+  -- \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
+  -- \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui']]
+  --       end,
+  --   },
     -- snippets
     {
         "SirVer/ultisnips",
@@ -117,7 +130,7 @@ return {
         "mbbill/undotree",
         event = "VeryLazy",
         keys = function()
-            map("n", "<leader>u", ":UndotreeToggle<CR>:UndotreeFocus<CR>", { desc = "undotree toggle then focus" })
+            Map("n", "<leader>u", ":UndotreeToggle<CR>:UndotreeFocus<CR>", { desc = "undotree toggle then focus" })
         end,
     },
     {

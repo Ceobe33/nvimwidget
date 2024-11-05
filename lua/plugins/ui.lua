@@ -1,4 +1,12 @@
 return {
+    {
+        'adelarsq/image_preview.nvim',
+        enabled = false,
+        event = 'VeryLazy',
+        config = function()
+            require("image_preview").setup()
+        end
+    },
     -- Soothing pastel theme for (Neo)vim
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     -- to fixget_signs( tbl_map ) error
@@ -69,7 +77,7 @@ return {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
         keys = {
-            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
             { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
         },
         opts = {
@@ -175,7 +183,7 @@ return {
                         },
                     },
                     lualine_y = {
-                        { "progress", separator = " ", padding = { left = 1, right = 0 } },
+                        { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
                         { "location", padding = { left = 0, right = 1 } },
                     },
                     lualine_z = {

@@ -1,8 +1,3 @@
-" @Author: Coebe <youareaaron0@gmail.com>
-" @Date: 2024-08-09 10:23:36
-" @Last Modified by: aaron <youareaaron0@gmail.com>
-" @Last Modified time: 2024-08-28 11:59:59
-
 
 "这样复制到 X 主选择区
 "let @*=expand('%')
@@ -73,4 +68,16 @@ au FileType cpp nnoremap <buffer>K :JbzCppMan<CR>
 "switching between source and header file
 au BufEnter *.h  let b:fswitchdst = "c,cpp,cc,m"
 au BufEnter *.cc let b:fswitchdst = "h,hpp"
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 

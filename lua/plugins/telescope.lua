@@ -35,9 +35,9 @@ return {
             -- add a keymap to browse plugin files
             -- stylua: ignore
             {
-              "<leader>fp",
-              function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-              desc = "Find Plugin File",
+                "<leader>fp",
+                function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+                desc = "Find Plugin File",
             },
         },
         config = function()
@@ -47,9 +47,9 @@ return {
             pcall(require("telescope").load_extension, "fzf")
 
             -- See `:help telescope.builtin`
-            map("n", "<leader>fr", builtin.oldfiles, { desc = "Files Recent" })
-            map("n", "<leader><space>", builtin.buffers, { desc = "Find existing buffers" })
-            map("n", "<leader>/", function()
+            Map("n", "<leader>fr", builtin.oldfiles, { desc = "Files Recent" })
+            Map("n", "<leader><space>", builtin.buffers, { desc = "Find existing buffers" })
+            Map("n", "<leader>/", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
                     winblend = 10,
@@ -58,21 +58,21 @@ return {
             end, { desc = "[/] Fuzzily search in current buffer" })
 
             -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-            map("n", "<leader>sh", builtin.help_tags, { desc = "Search Help" })
-            map("n", "<leader>sw", builtin.grep_string, { desc = "Search current Word" })
+            Map("n", "<leader>sh", builtin.help_tags, { desc = "Search Help" })
+            Map("n", "<leader>sw", builtin.grep_string, { desc = "Search current Word" })
             -- vim.keymap.set('n', '<leader>ps', function()
             --     builtin.grep_string({ search = vim.fn.input("Grep > ") })
             -- end)
 
             -- map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-            map("n", "<leader>sg", function()
+            Map("n", "<leader>sg", function()
                 require("telescope.builtin").live_grep({
                     cwd = vim.fn.expand("%:p:h"),
                     file_ignore_patterns = { "node_modules" },
                 })
             end, { desc = "[S]earch by [G]rep(plugins/telescope)" })
-            map("n", "<leader>sd", builtin.diagnostics, { desc = "Search Diagnostics" })
-            map("n", "<leader>pr", builtin.lsp_references, { desc = "Pameter References" })
+            Map("n", "<leader>sd", builtin.diagnostics, { desc = "Search Diagnostics" })
+            Map("n", "<leader>pr", builtin.lsp_references, { desc = "Pameter References" })
         end,
         -- change some options
         opts = {
