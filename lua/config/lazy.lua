@@ -52,8 +52,8 @@ end
 require("lazy").setup({
     spec = {
         -- add LazyVim and import its plugins
-        { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
-        { import = "lazyvim.plugins.extras.formatting.prettier" },
+        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        -- { import = "lazyvim.plugins.extras.formatting.prettier" },
         {
             -- practice vim operate
             "ThePrimeagen/vim-be-good",
@@ -68,30 +68,30 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
-        { "nvim-neo-tree/neo-tree.nvim",             enabled = false },
-        { "echasnovski/mini.icons",                  enabled = false },
+        { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+        { "echasnovski/mini.icons", enabled = false },
         -- basic snippet
-        { "garymjr/nvim-snippets",                   enabled = false },
-        { "rafamadriz/friendly-snippets",            enabled = false },
-        { "saadparwaiz1/cmp_luasnip",                enabled = false },
+        { "garymjr/nvim-snippets", enabled = false },
+        { "rafamadriz/friendly-snippets", enabled = false },
+        { "saadparwaiz1/cmp_luasnip", enabled = false },
 
-        { "pechorin/any-jump.vim",                   enabled = false },
-        { "hrsh7th/cmp-nvim-lsp",                    enabled = false },
+        { "pechorin/any-jump.vim", enabled = false },
+        { "hrsh7th/cmp-nvim-lsp", enabled = false },
 
-        { "echasnovski/mini.ai",                     enabled = false },
-        { "mfussenegger/nvim-lint",                  enabled = false },
-        { "SmiteshP/nvim-navic",                     enabled = false },
+        { "echasnovski/mini.ai", enabled = false },
+        { "mfussenegger/nvim-lint", enabled = false },
+        { "SmiteshP/nvim-navic", enabled = false },
 
-        { "folke/lazydev.nvim",                      enabled = false },
-        { "folke/ts-comments.nvim",                  enabled = false },
+        { "folke/lazydev.nvim", enabled = false },
+        { "folke/ts-comments.nvim", enabled = false },
 
-        { "hrsh7th/nvim-cmp",                        enabled = false },
+        { "hrsh7th/nvim-cmp", enabled = false },
         -- { "williamboman/mason-lspconfig.nvim", enabled = false },
-        { "folke/persistence.nvim",                  enabled = false },
-        { "windwp/nvim-ts-autotag",                  enabled = false },
-        { "tyru/open-browser.vim",                   enabled = false },
-        { "echasnovski/mini.indentscope",            enabled = false },
-        { "echasnovski/mini.pairs",                  enabled = false },
+        { "folke/persistence.nvim", enabled = false },
+        { "windwp/nvim-ts-autotag", enabled = false },
+        { "tyru/open-browser.vim", enabled = false },
+        { "echasnovski/mini.indentscope", enabled = false },
+        { "echasnovski/mini.pairs", enabled = false },
 
         -- { "folke/noice.nvim", enabled = false },
         -- { "folke/noice.nvim", enabled = false },

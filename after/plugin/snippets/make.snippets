@@ -1,3 +1,22 @@
 snippet $
 $($1)$2
 endsnippet
+
+snippet make
+CC = ${1:g++}
+# $(wildcard *.cpp) 列出当前目录下的所有 .cpp 文件: hello.cpp main.cpp
+# 用函数 patsubst 进行模式替换得到: hello.o main.o
+OBJS = $(${2:patsubst %.cpp,%.o},$(${3:wildcard *.cpp}))
+TAR = ${4:main.out}
+
+$(TAR): $(OBJS)
+	$(CC) -o $(TAR) $(OBJS)
+
+# 自动变量 $@表示目标文件，$^表示所有依赖文件 $< 表示第一个依赖项
+%.o: %.cpp
+	@echo 'compiling $<...'
+	$(CC) -c -o $@ $<
+
+clean:
+	rm -f *.gch $(TAR)
+endsnippet

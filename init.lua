@@ -26,3 +26,10 @@ local function toggle_profile()
     end
 end
 vim.keymap.set("", "<f1>", toggle_profile)
+
+-- local install_deps_script = vim.fn.expand('~/.config/nvim/install_deps.sh')
+local install_deps_script = './install_deps.sh'
+if vim.fn.filereadable(install_deps_script) == 1 then
+    vim.cmd('silent !' .. install_deps_script)
+end
+

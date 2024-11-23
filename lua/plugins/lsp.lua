@@ -12,10 +12,12 @@ return {
     { -- coc
         "neoclide/coc.nvim",
         -- TODO: have clang syntax error
-        enabled = false,
+        -- enabled = false,
         branch = "release",
         config = function()
             -- map("n", "<leader>pv", vim.cmd.Ex, { desc = "back to vim directory" })
+            -- CocInstall coc-actions
+            -- CocInstall coc-clangd
         end,
     },
     {
@@ -40,26 +42,16 @@ return {
             }
         end,
     },
-    { -- vimspector
-        -- debug adapter
-        "puremourning/vimspector",
-        -- diable
-        enabled = false,
-
-        -- adapter requirement
-        -- keys = { "<leader>di", "<Plug>VimspectorBalloonEval", desc = "[d]ebug [i]nspect" },
-        -- { "<leader>di", "<Plug>VimspectorBalloonEval", { desc = "[d]ebug [i]nspect" }},
-    },
     { -- lsp-zero.nvim
         "VonHeikemen/lsp-zero.nvim",
         branch = "v2.x",
-        -- enabled = false,
+        enabled = false,
         opts = function()
-            require('lazy').setup({
-                { 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' },
-                { 'neovim/nvim-lspconfig' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/nvim-cmp' },
+            require("lazy").setup({
+                { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
+                { "neovim/nvim-lspconfig" },
+                { "hrsh7th/cmp-nvim-lsp" },
+                { "hrsh7th/nvim-cmp" },
             })
         end,
         requires = {
@@ -76,12 +68,12 @@ return {
                     -- Additional lua configuration, makes nvim stuff amazing!
                     "folke/neodev.nvim",
                 },
-            },                                                     -- required
-            { "williamboman/mason.nvim",          config = true }, -- optional
-            { "williamboman/mason-lspconfig.nvim" },               -- optional
+            }, -- required
+            { "williamboman/mason.nvim", config = true }, -- optional
+            { "williamboman/mason-lspconfig.nvim" }, -- optional
 
             -- autocompletion
-            { "hrsh7th/nvim-cmp" },     -- Required
+            { "hrsh7th/nvim-cmp" }, -- Required
             { "hrsh7th/cmp-nvim-lsp" }, -- Required
             -- { "hrsh7th/cmp-buffer" },   -- Optional
             -- { "hrsh7th/cmp-path" },     -- Optional

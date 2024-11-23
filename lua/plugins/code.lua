@@ -9,62 +9,29 @@
 --
 -- vim.api.nvim_create_user_command("SnipList", list_snips, {})
 return {
-    -- switch within cpp & h files
     {
-        "derekwyatt/vim-fswitch",
-        config = function()
-            Map("n", "<leader>oh", ":FSSplitLeft<CR>", { desc = "open source/header on left" })
-            Map("n", "<leader>ol", ":FSSplitRight<CR>", { desc = "open source/header on right" })
-            Map("n", "<leader>ok", ":FSSplitAbove<CR>", { desc = "open source/header on above" })
-            Map("n", "<leader>oj", ":FSSplitBelow<CR>", { desc = "open source/header on below" })
-        end,
-    },
-    -- c++ syntax highlighting
-    {
-        "bfrg/vim-cpp-modern",
-
-        -- cppman for cppreference document
-        config = function()
-            -- map("n", "K", function()
-            --     local old_isk = vim.bo.iskeyword
-            --     vim.bo.iskeyword = old_isk .. ",:"
-            --     local str = vim.fn.expand("<cword>")
-            --     vim.bo.iskeyword = old_isk
-            --     -- os.execute("cppman " .. str)
-            --     -- vim.cmd("cppman " .. str)
-            --     -- vim.cmd("command! -nargs=0 Cppman" .. str)
-            -- end)
-        end,
+        "jiangmiao/auto-pairs",
     },
 
     -- Exploring source file structure with vista.vim
     {
         "liuchengxu/vista.vim",
+        enabled = false,
         config = function()
-            Map('n', '<leader>cv', ':Vista!!<CR>', { desc = 'toggle vista outlines' })
-        end
+            Map("n", "<leader>cv", ":Vista!!<CR>", { desc = "toggle vista outlines" })
+        end,
     },
     -- { "preservim/tagbar" },
     {
-        'simrat39/symbols-outline.nvim',
+        "simrat39/symbols-outline.nvim",
         enabled = false,
         opts = function()
             require("symbols-outline").setup()
-        end
-
+        end,
     },
     -- tag generate
     { "ludovicchabant/vim-gutentags" },
 
-  --   {
-  --       "ahonn/vim-fileheader",
-  --       config = function()
-  --           vim.g.gutentags_ctags_exclude_wildignore = 1
-  --           vim.g.gutentags_ctags_exclude = [[
-  -- \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
-  -- \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui']]
-  --       end,
-  --   },
     -- snippets
     {
         "SirVer/ultisnips",
@@ -96,7 +63,7 @@ return {
     -- },
     {
         "stevearc/conform.nvim",
-        enabled = false,
+        -- enabled = false,
         opts = function()
             require("conform").setup({
                 formatters_by_ft = {
@@ -117,20 +84,6 @@ return {
                     ["_"] = { "trim_whitespace" },
                 },
             })
-        end,
-    },
-    {
-        -- " post install (yarn install | npm install) then load plugin only for editing supported files
-        -- Plug 'prettier/vim-prettier', {
-        --   \ 'do': 'yarn install --frozen-lockfile --production',
-        --   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-        "prettier/vim-prettier",
-    },
-    {
-        "mbbill/undotree",
-        event = "VeryLazy",
-        keys = function()
-            Map("n", "<leader>u", ":UndotreeToggle<CR>:UndotreeFocus<CR>", { desc = "undotree toggle then focus" })
         end,
     },
     {

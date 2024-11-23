@@ -26,7 +26,14 @@ vim.opt.scrolloff = 8
 -- horizontal scroll, cursor pos over side
 vim.opt.sidescrolloff = 15
 
-vim.opt.encoding = "UTF-8"
+-- Set file encodings in Lua for Neovim
+vim.opt.fileencodings = { "utf-8", "gb2312", "gb18030", "gbk", "ucs-bom", "cp936", "latin1" }
+
+-- Set encoding to utf8
+vim.opt.encoding = "utf8"
+
+-- Set fallback encodings for Neovim (fencs is not directly applicable in Lua, but we can set fileencoding)
+vim.opt.fileencoding = "utf8"
 
 -- [[ Setting options ]]
 -- See `:help vim.o`

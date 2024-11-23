@@ -36,7 +36,7 @@ Map("v", "<leader>pp", '"+p', { desc = "[P]aste from system clipboard" })
 --- project
 -- to open other projects
 Map("n", "<leader>c", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "use for tmux emulator" })
-Map("n", "<leader>f", function()
+Map("n", "<leader><leader>f", function()
     vim.lsp.buf.format()
 end, { desc = "[F]ormat current file" })
 
