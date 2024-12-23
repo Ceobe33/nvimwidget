@@ -1,14 +1,126 @@
+Snacks = require("snacks")
 return {
     {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            bigfile = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+
+            dashboard = {
+                enabled = true,
+
+                width = 60,
+                row = nil, -- dashboard position. nil for center
+                col = nil, -- dashboard position. nil for center
+                pane_gap = 4, -- empty columns between vertical panes
+                autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+                -- These settings are used by some built-in sections
+                preset = {
+                    -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+                    ---@type fun(cmd:string, opts:table)|nil
+                    pick = nil,
+                    -- Used by the `keys` section to show keymaps.
+                    -- Set your custom keymaps here.
+                    -- When using a function, the `items` argument are the default keymaps.
+                    keys = {
+                        {
+                            icon = " ",
+                            key = "f",
+                            desc = "Find File",
+                            action = ":lua Snacks.dashboard.pick('files')",
+                        },
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        {
+                            icon = " ",
+                            key = "g",
+                            desc = "Find Text",
+                            action = ":lua Snacks.dashboard.pick('live_grep')",
+                        },
+                        {
+                            icon = " ",
+                            key = "r",
+                            desc = "Recent Files",
+                            action = ":lua Snacks.dashboard.pick('oldfiles')",
+                        },
+                        {
+                            icon = " ",
+                            key = "c",
+                            desc = "Config",
+                            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+                        },
+                        { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                        {
+                            icon = "󰒲 ",
+                            key = "L",
+                            desc = "Lazy",
+                            action = ":Lazy",
+                            enabled = package.loaded.lazy ~= nil,
+                        },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    },
+                    -- Used by the `header` section
+                    header = [[
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣡⣾⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣟⠻⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⡿⢫⣷⣿⣿⣿⣿⣿⣿⣿⣾⣯⣿⡿⢧⡚⢷⣌⣽⣿⣿⣿⣿⣿⣶⡌⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⣇⣘⠿⢹⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⠀⢸⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣻⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⡇⠀⣬⠏⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣷⣼⣿⣿⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⠀⠈⠁⠀⣿⡇⠘⡟⣿⣿⣿⣿⣿⣿⣿⣿⡏⠿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣇⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⡏⠀⠀⠐⠀⢻⣇⠀⠀⠹⣿⣿⣿⣿⣿⣿⣩⡶⠼⠟⠻⠞⣿⡈⠻⣟⢻⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢿⠀⡆⠀⠘⢿⢻⡿⣿⣧⣷⢣⣶⡃⢀⣾⡆⡋⣧⠙⢿⣿⣿⣟⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⡥⠂⡐⠀⠁⠑⣾⣿⣿⣾⣿⣿⣿⡿⣷⣷⣿⣧⣾⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⡿⣿⣍⡴⠆⠀⠀⠀⠀⠀⠀⠀⠀⣼⣄⣀⣷⡄⣙⢿⣿⣿⣿⣿⣯⣶⣿⣿⢟⣾⣿⣿⢡⣿⣿⣿⣿⣿
+        ⣿⡏⣾⣿⣿⣿⣷⣦⠀⠀⠀⢀⡀⠀⠀⠠⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣡⣾⣿⣿⢏⣾⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⡴⠀⠀⠀⠀⠀⠠⠀⠰⣿⣿⣿⣷⣿⠿⠿⣿⣿⣭⡶⣫⠔⢻⢿⢇⣾⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⡿⢫⣽⠟⣋⠀⠀⠀⠀⣶⣦⠀⠀⠀⠈⠻⣿⣿⣿⣾⣿⣿⣿⣿⡿⣣⣿⣿⢸⣾⣿⣿⣿⣿⣿⣿⣿
+        ⡿⠛⣹⣶⣶⣶⣾⣿⣷⣦⣤⣤⣀⣀⠀⠀⠀⠀⠀⠀⠉⠛⠻⢿⣿⡿⠫⠾⠿⠋⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⡆⣠⢀⣴⣏⡀⠀⠀⠀⠉⠀⠀⢀⣠⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿⣿
+]],
+                },
+                sections = {
+                    { section = "header" },
+                    { section = "keys", gap = 1, padding = 1 },
+                    { section = "startup" },
+                    {
+                        section = "terminal",
+                        cmd = "pokemon-colorscripts -r -b; sleep .1",
+                        random = 10,
+                        pane = 2,
+                        indent = 4,
+                        height = 30,
+                        width = 80,
+                    },
+                },
+            },
+        },
+    },
+    {
         "adelarsq/image_preview.nvim",
-        enabled = false,
+        -- enabled = false,
         event = "VeryLazy",
         config = function()
             require("image_preview").setup()
         end,
     },
     -- Soothing pastel theme for (Neo)vim
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        --enabled = false
+    },
     -- to fixget_signs( tbl_map ) error
     {
         "lewis6991/gitsigns.nvim",
@@ -21,10 +133,44 @@ return {
         "ryanoasis/vim-devicons",
         event = "VeryLazy",
     },
+
+    -- noicer ui
+    {
+        "folke/noice.nvim",
+        -- enabled = false,
+        event = "VeryLazy",
+        dependencies = {
+            { "MunifTanjim/nui.nvim" },
+
+            { "rcarriga/nvim-notify" },
+        },
+        opts = {
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                },
+            },
+            presets = {
+                bottom_search = true,
+                command_palette = true,
+                long_message_to_split = true,
+            },
+        },
+        -- stylua: ignore
+        keys = {
+            { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
+            { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
+            { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
+            { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
+            { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll forward",  mode = { "i", "n", "s" } },
+            { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll backward", mode = { "i", "n", "s" } },
+        },
+    },
     -- Better `vim.notify()`
+    -- noice's requirement
     {
         "rcarriga/nvim-notify",
-        enabled = false,
         keys = {
             {
                 "<leader>un",
@@ -231,125 +377,6 @@ return {
         end,
         config = function(_, opts)
             require("mini.indentscope").setup(opts)
-        end,
-    },
-
-    -- noicer ui
-    {
-        "folke/noice.nvim",
-        -- enabled = false,
-        event = "VeryLazy",
-        dependencies = {
-            { "MunifTanjim/nui.nvim" },
-
-            { "rcarriga/nvim-notify" },
-        },
-        opts = {
-            lsp = {
-                override = {
-                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    ["vim.lsp.util.stylize_markdown"] = true,
-                },
-            },
-            presets = {
-                bottom_search = true,
-                command_palette = true,
-                long_message_to_split = true,
-            },
-        },
-        -- stylua: ignore
-        keys = {
-            { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
-            { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
-            { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
-            { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
-            { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll forward",  mode = { "i", "n", "s" } },
-            { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll backward", mode = { "i", "n", "s" } },
-        },
-    },
-
-    -- dashboard
-    {
-        "goolord/alpha-nvim",
-        -- event = "VimEnter",
-        -- optional = true,
-        opts = function()
-            local dashboard = require("alpha.themes.dashboard")
-            local logo = [[
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣡⣾⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣟⠻⣿⣿⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⡿⢫⣷⣿⣿⣿⣿⣿⣿⣿⣾⣯⣿⡿⢧⡚⢷⣌⣽⣿⣿⣿⣿⣿⣶⡌⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⣇⣘⠿⢹⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⠀⢸⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣻⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⡇⠀⣬⠏⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣷⣼⣿⣿⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⠀⠈⠁⠀⣿⡇⠘⡟⣿⣿⣿⣿⣿⣿⣿⣿⡏⠿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣇⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⡏⠀⠀⠐⠀⢻⣇⠀⠀⠹⣿⣿⣿⣿⣿⣿⣩⡶⠼⠟⠻⠞⣿⡈⠻⣟⢻⣿⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢿⠀⡆⠀⠘⢿⢻⡿⣿⣧⣷⢣⣶⡃⢀⣾⡆⡋⣧⠙⢿⣿⣿⣟⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⡥⠂⡐⠀⠁⠑⣾⣿⣿⣾⣿⣿⣿⡿⣷⣷⣿⣧⣾⣿⣿⣿⣿⣿⣿⣿
-        ⣿⣿⡿⣿⣍⡴⠆⠀⠀⠀⠀⠀⠀⠀⠀⣼⣄⣀⣷⡄⣙⢿⣿⣿⣿⣿⣯⣶⣿⣿⢟⣾⣿⣿⢡⣿⣿⣿⣿⣿
-        ⣿⡏⣾⣿⣿⣿⣷⣦⠀⠀⠀⢀⡀⠀⠀⠠⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣡⣾⣿⣿⢏⣾⣿⣿⣿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⡴⠀⠀⠀⠀⠀⠠⠀⠰⣿⣿⣿⣷⣿⠿⠿⣿⣿⣭⡶⣫⠔⢻⢿⢇⣾⣿⣿⣿⣿⣿⣿
-        ⣿⣿⣿⡿⢫⣽⠟⣋⠀⠀⠀⠀⣶⣦⠀⠀⠀⠈⠻⣿⣿⣿⣾⣿⣿⣿⣿⡿⣣⣿⣿⢸⣾⣿⣿⣿⣿⣿⣿⣿
-        ⡿⠛⣹⣶⣶⣶⣾⣿⣷⣦⣤⣤⣀⣀⠀⠀⠀⠀⠀⠀⠉⠛⠻⢿⣿⡿⠫⠾⠿⠋⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-        ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⡆⣠⢀⣴⣏⡀⠀⠀⠀⠉⠀⠀⢀⣠⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-        ⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿⣿
-      ]]
-            local logo1 = [[
-      ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
-      ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z
-      ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z
-      ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z
-      ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
-      ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
-      ]]
-
-            dashboard.section.header.val = vim.split(logo, "\n")
-            dashboard.section.buttons.val = {
-                dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-                dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-                dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-                dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-                dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-                dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-                dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
-                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
-            }
-            for _, button in ipairs(dashboard.section.buttons.val) do
-                button.opts.hl = "AlphaButtons"
-                button.opts.hl_shortcut = "AlphaShortcut"
-            end
-            dashboard.section.header.opts.hl = "AlphaHeader"
-            dashboard.section.buttons.opts.hl = "AlphaButtons"
-            dashboard.section.footer.opts.hl = "AlphaFooter"
-            dashboard.opts.layout[1].val = 8
-            return dashboard
-        end,
-        config = function(_, dashboard)
-            -- close Lazy and re-open when the dashboard is ready
-            if vim.o.filetype == "lazy" then
-                vim.cmd.close()
-                vim.api.nvim_create_autocmd("User", {
-                    pattern = "AlphaReady",
-                    callback = function()
-                        require("lazy").show()
-                    end,
-                })
-            end
-
-            require("alpha").setup(dashboard.opts)
-
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "LazyVimStarted",
-                callback = function()
-                    local stats = require("lazy").stats()
-                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                    dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-                    pcall(vim.cmd.AlphaRedraw)
-                end,
-            })
         end,
     },
 

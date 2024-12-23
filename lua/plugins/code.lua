@@ -16,9 +16,14 @@ return {
     -- Exploring source file structure with vista.vim
     {
         "liuchengxu/vista.vim",
-        enabled = false,
+        -- enabled = false,
         config = function()
             Map("n", "<leader>cv", ":Vista!!<CR>", { desc = "toggle vista outlines" })
+            -- Map("n", "<leader>cv", "set rnu<bar> Vista!!<CR>", { desc = "toggle vista outlines" })
+            -- Map("n", "<leader>cv", function()
+            --     vim.cmd("Vista!!")
+            --     vim.cmd("set rnu")
+            -- end, { desc = "toggle vista outlines" })
         end,
     },
     -- { "preservim/tagbar" },

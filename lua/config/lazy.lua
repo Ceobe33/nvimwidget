@@ -65,7 +65,7 @@ require("lazy").setup({
         -- import/override with your plugins
         { import = "plugins" },
         { import = "plugins.lsp" },
-        { import = "lazyvim.plugins.extras.ui.alpha" },
+        -- { import = "lazyvim.plugins.extras.ui.alpha" },
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
@@ -93,10 +93,7 @@ require("lazy").setup({
         { "echasnovski/mini.indentscope", enabled = false },
         { "echasnovski/mini.pairs", enabled = false },
 
-        -- { "folke/noice.nvim", enabled = false },
-        -- { "folke/noice.nvim", enabled = false },
-        -- { "folke/noice.nvim", enabled = false },
-        -- { "folke/noice.nvim", enabled = false },
+        { "goolord/alpha-nvim", enabled = false },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -106,6 +103,9 @@ require("lazy").setup({
         -- have outdated releases, which may break your Neovim install.
         version = false, -- always use the latest git commit
         -- version = "*", -- try installing the latest stable version for plugins that support semver
+        autocmds = false,
+        options = false,
+        keymaps = false,
     },
     ui = {
         border = "rounded",

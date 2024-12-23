@@ -1,4 +1,5 @@
 return {
+    { "preservim/vim-markdown", branch = "master" },
     {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },

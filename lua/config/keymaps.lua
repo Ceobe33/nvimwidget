@@ -90,15 +90,16 @@ Map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
 Map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 Map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
+local len = 10
 -- Resize window using <ctrl> arrow keys
-Map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-Map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-Map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-Map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+Map("n", "<C-Up>", "<cmd>resize +" .. len .. "<cr>", { desc = "Increase window height" })
+Map("n", "<C-Down>", "<cmd>resize -" .. len .. "<cr>", { desc = "Decrease window height" })
+Map("n", "<C-Left>", "<cmd>vertical resize -" .. len .. "<cr>", { desc = "Decrease window width" })
+Map("n", "<C-Right>", "<cmd>vertical resize +" .. len .. "<cr>", { desc = "Increase window width" })
 
 -- Move Lines
-Map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-Map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+-- Map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+-- Map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 Map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 Map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 Map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
@@ -112,9 +113,6 @@ else
     Map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     Map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
--- disable H, L key for vim
-vim.keymap.del("n", "H")
-vim.keymap.del("n", "L")
 Map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 Map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 

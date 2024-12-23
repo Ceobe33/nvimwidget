@@ -1,5 +1,6 @@
 return {
     "rose-pine/neovim",
+    enabled = false,
     opts = {
         --Variant respects `vim.o.background`, using dawn when light and dark_variant when dark
         --- @usage 'auto'|'main'|'moon'|'dawn'

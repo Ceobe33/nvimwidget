@@ -15,6 +15,7 @@ return {
             -- "typescript",
             -- "vimdoc",
             "vim",
+            "markdown",
         })
         opts.auto_install = true
         opts.run = ":TSInstallFromGrammer"

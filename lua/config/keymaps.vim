@@ -10,17 +10,26 @@ let modified_path = substitute(original_path, '^/mnt/\(\w\)', '\1:', '')
 "echo original_path
 let @+ = modified_path
 endfunction
-silent! command -nargs=0  CopyWin :call s:CpFileEntryToClipBoardNoLineWin()
+silent! command -nargs=0  CpWinDir :call s:CpFileEntryToClipBoardNoLineWin()
+
+" for career hexo yet
+function! g:CopyFileAndDirectory()
+let original_path = expand("%:p")
+let modified_path = substitute(original_path, '.*/\(.*/.*\).md', '\1', '')
+
+let @+ = modified_path
+endfunction
+silent! command -nargs=0 CpDirfn call g:CopyFileAndDirectory()
 
 function! g:CpFileEntryToClipBoardNoLine()
 let @+ = expand("%:p")
 endfunction
-silent! command -nargs=0 CopyNLN call g:CpFileEntryToClipBoardNoLine()
+silent! command -nargs=0 CpNLN call g:CpFileEntryToClipBoardNoLine()
 
 function! g:CpFileEntryToClipBoard()
 let @+ = expand("%:p").'|'.line(".")
 endfunction
-silent! command -nargs=0 Copy2CB call g:CpFileEntryToClipBoard()
+silent! command -nargs=0 Cp2CB call g:CpFileEntryToClipBoard()
 
 
 " file header config
@@ -75,9 +84,13 @@ endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
 
+" enable vim builtin match plugin
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
