@@ -1,5 +1,4 @@
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
-
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -11,7 +10,6 @@ vim.opt.updatetime = 300
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
-
 -- Autocomplete
 function _G.check_back_space()
     local col = vim.fn.col(".") - 1
@@ -24,8 +22,8 @@ end
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
 -- other plugins before putting this into your config
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-Map("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-Map("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+Map("i", "<C-N>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+Map("i", "<C-P>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice
@@ -72,8 +70,8 @@ vim.api.nvim_create_autocmd("CursorHold", {
 Map("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 -- Formatting selected code
-Map("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
-Map("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+Map("x", "<leader>cf", "<Plug>(coc-format-selected)", { silent = true })
+-- Map("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
 
 -- Setup formatexpr specified filetype(s)
 vim.api.nvim_create_autocmd("FileType", {
@@ -157,18 +155,18 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 -- Show all diagnostics
-Map("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+Map("n", "<space>ca", ":<C-u>CocList diagnostics<cr>", opts)
 -- Manage extensions
-Map("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
+Map("n", "<space>ce", ":<C-u>CocList extensions<cr>", opts)
 -- Show commands
-Map("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
+Map("n", "<space>cc", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-Map("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+Map("n", "<space>co", ":<C-u>CocList outline<cr>", opts)
 -- Search workspace symbols
-Map("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+Map("n", "<space>cs", ":<C-u>CocList -I symbols<cr>", opts)
 -- Do default action for next item
-Map("n", "<space>j", ":<C-u>CocNext<cr>", opts)
+Map("n", "<space>cj", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item
-Map("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
+Map("n", "<space>ck", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
-Map("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+Map("n", "<space>cp", ":<C-u>CocListResume<cr>", opts)

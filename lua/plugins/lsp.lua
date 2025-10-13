@@ -14,6 +14,13 @@ return {
         -- TODO: have clang syntax error
         -- enabled = false,
         branch = "release",
+
+        opts = function(_, opts)
+            if opts.ui == nil then
+                opts.ui = {}
+            end
+            opts.ui.border = "rounded"
+        end,
         config = function()
             -- map("n", "<leader>pv", vim.cmd.Ex, { desc = "back to vim directory" })
             -- CocInstall coc-actions
@@ -42,47 +49,27 @@ return {
             }
         end,
     },
-    { -- lsp-zero.nvim
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v2.x",
-        enabled = false,
-        opts = function()
-            require("lazy").setup({
-                { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
-                { "neovim/nvim-lspconfig" },
-                { "hrsh7th/cmp-nvim-lsp" },
-                { "hrsh7th/nvim-cmp" },
-            })
-        end,
-        requires = {
-            -- lsp support
-            -- Automatically install LSPs to stdpath for neovim
-            {
-                -- LSP Configuration & Plugins
-                "neovim/nvim-lspconfig",
-                dependencies = {
-                    -- Useful status updates for LSP
-                    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-                    { "j-hui/fidget.nvim", opts = {} },
-
-                    -- Additional lua configuration, makes nvim stuff amazing!
-                    "folke/neodev.nvim",
-                },
-            }, -- required
-            { "williamboman/mason.nvim", config = true }, -- optional
-            { "williamboman/mason-lspconfig.nvim" }, -- optional
-
-            -- autocompletion
-            { "hrsh7th/nvim-cmp" }, -- Required
-            { "hrsh7th/cmp-nvim-lsp" }, -- Required
-            -- { "hrsh7th/cmp-buffer" },   -- Optional
-            -- { "hrsh7th/cmp-path" },     -- Optional
-            -- { "saadparwaiz1/cmp_luasnip" }, -- Optional
-            -- { "hrsh7th/cmp-nvim-lua" }, -- Optional
-
-            -- Snippets
-            { "L3MON4D3/LuaSnip" }, -- Required
-            -- { "rafamadriz/friendly-snippets" }, -- Optional
+    {
+        "folke/lazydev.nvim",
+        optional = true,
+        -- Same as `dependencies` but does not force the plugin to load
+        specs = {
+            { "saghen/blink.cmp", opts = { sources = { default = { "lazydev" } } } },
         },
+        -- "saghen/blink.cmp",
+        -- dependencies = { "folke/lazydev.nvim" },
+        -- opts = {
+        --     sources = {
+        --         -- add lazydev to your completion providers
+        --         default = { "lazydev" },
+        --         providers = {
+        --             lazydev = {
+        --                 name = "LazyDev",
+        --                 module = "lazydev.integrations.blink",
+        --                 score_offset = 100, -- show at a higher priority than lsp
+        --             },
+        --         },
+        --     },
+        -- },
     },
 }

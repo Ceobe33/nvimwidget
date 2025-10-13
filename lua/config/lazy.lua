@@ -5,7 +5,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     -- bootstrap lazy.nvim
     -- stylua: ignore
-    vim.fn.system({ "git", "clone", "--filter=blob:none", "git@github.com:folke/lazy.nvim.git", "--branch=stable",
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
         lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
@@ -24,7 +24,9 @@ function Map(mode, lhs, rhs, opts, isApi)
         opts = opts or {}
         opts.silent = opts.silent ~= false
         local info = debug.getinfo(2, "S")
-        opts.desc = (opts.desc or "") .. " --=>" .. info.source:match("[^/\\]+$")
+        if opts.desc == nil or not opts.desc:find("--=>") then
+            opts.desc = (opts.desc or "") .. " --=>" .. info.source:match("[^/\\]+$")
+        end
         if isApi then
             vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
         else
@@ -82,7 +84,7 @@ require("lazy").setup({
         { "mfussenegger/nvim-lint", enabled = false },
         { "SmiteshP/nvim-navic", enabled = false },
 
-        { "folke/lazydev.nvim", enabled = false },
+        -- { "folke/lazydev.nvim", enabled = false },
         { "folke/ts-comments.nvim", enabled = false },
 
         { "hrsh7th/nvim-cmp", enabled = false },

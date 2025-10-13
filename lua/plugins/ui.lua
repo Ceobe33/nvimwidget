@@ -93,15 +93,6 @@ return {
                     { section = "header" },
                     { section = "keys", gap = 1, padding = 1 },
                     { section = "startup" },
-                    {
-                        section = "terminal",
-                        cmd = "pokemon-colorscripts -r -b; sleep .1",
-                        random = 10,
-                        pane = 2,
-                        indent = 4,
-                        height = 30,
-                        width = 80,
-                    },
                 },
             },
         },
@@ -130,6 +121,7 @@ return {
     },
     -- ui
     {
+        -- "nvim-tree/nvim-web-devicons",
         "ryanoasis/vim-devicons",
         event = "VeryLazy",
     },
