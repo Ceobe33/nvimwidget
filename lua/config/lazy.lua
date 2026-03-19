@@ -11,14 +11,17 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 ---user keymap api
----@param mode string "n" "v" "i"
+---@param mode string | table "n" "v" "i" | {"n", "v"}
 ---@param lhs any
 ---@param rhs any
 ---@param opts any
 ---@param isApi any
 function Map(mode, lhs, rhs, opts, isApi)
+    if opts and opts.disabled and opts.disabled then
+        vim.keymap.del(mode, lhs)
+        return
+    end
     local keys = require("lazy.core.handler").handlers.keys
-    ---@cast keys LazyKeysHandler
     -- do not create the keymap if a lazy keys handler exists
     if not keys.active[keys.parse({ lhs, mode = mode }).id] then
         opts = opts or {}
@@ -27,10 +30,20 @@ function Map(mode, lhs, rhs, opts, isApi)
         if opts.desc == nil or not opts.desc:find("--=>") then
             opts.desc = (opts.desc or "") .. " --=>" .. info.source:match("[^/\\]+$")
         end
-        if isApi then
-            vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+        if type(mode) == "table" then
+            for i, v in pairs(mode) do
+                if isApi then
+                    vim.api.nvim_set_keymap(v, lhs, rhs, opts)
+                else
+                    vim.keymap.set(v, lhs, rhs, opts)
+                end
+            end
         else
-            vim.keymap.set(mode, lhs, rhs, opts)
+            if isApi then
+                vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+            else
+                vim.keymap.set(mode, lhs, rhs, opts)
+            end
         end
     end
 end
@@ -71,7 +84,7 @@ require("lazy").setup({
         -- disabled plugins
         -- { "lervag/vimtex", enabled = false },
         { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-        { "echasnovski/mini.icons", enabled = false },
+        { "nvim-mini/mini.icons", enabled = false },
         -- basic snippet
         { "garymjr/nvim-snippets", enabled = false },
         { "rafamadriz/friendly-snippets", enabled = false },
@@ -80,7 +93,7 @@ require("lazy").setup({
         { "pechorin/any-jump.vim", enabled = false },
         { "hrsh7th/cmp-nvim-lsp", enabled = false },
 
-        { "echasnovski/mini.ai", enabled = false },
+        { "nvim-mini/mini.ai", enabled = false },
         { "mfussenegger/nvim-lint", enabled = false },
         { "SmiteshP/nvim-navic", enabled = false },
 
@@ -92,10 +105,18 @@ require("lazy").setup({
         { "folke/persistence.nvim", enabled = false },
         { "windwp/nvim-ts-autotag", enabled = false },
         { "tyru/open-browser.vim", enabled = false },
-        { "echasnovski/mini.indentscope", enabled = false },
-        { "echasnovski/mini.pairs", enabled = false },
+        { "nvim-mini/mini.indentscope", enabled = false },
+        { "nvim-mini/mini.pairs", enabled = false },
 
         { "goolord/alpha-nvim", enabled = false },
+    },
+    keys = {
+        -- to use vim's repeat function of '.'
+        { ".", false },
+        { ",", false },
+        { "<leader>ca", false },
+        { "<leader>cA", false },
+        { "<leader>cd", false },
     },
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

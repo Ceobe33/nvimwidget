@@ -158,12 +158,12 @@ return {
                 require("dapui").eval(nil, { enter = true })
             end)
 
-            Map("n", "<F5>", dap.continue)
-            Map("n", "<F11>", dap.step_into)
-            Map("n", "<F10>", dap.step_over)
-            Map("n", "<F8>", dap.step_out)
-            Map("n", "<F9>", dap.step_back)
-            Map("n", "S-<F5>", dap.restart)
+            Map("n", "<F5>", dap.continue, { desc = "run/continue" })
+            Map("n", "<F11>", dap.step_into, { desc = "step into" })
+            Map("n", "<F10>", dap.step_over, { desc = "step over" })
+            Map("n", "<F8>", dap.step_out, { desc = "step out" })
+            Map("n", "<F9>", dap.step_back, { desc = "step back" })
+            Map("n", "S-<F5>", dap.restart, { desc = "restart" })
 
             dap.listeners.before.attach.dapui_config = function()
                 ui.open()
@@ -177,6 +177,17 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 ui.close()
             end
+        end,
+    },
+    --adb
+    {
+        "samuel-cavalcanti/wifi-android-connect",
+        enabled = false,
+        config = function()
+            local WIFI_QR_code = require("wifi-android-connect")
+            WIFI_QR_code.setup({
+                timeout_in_seconds = 30,
+            })
         end,
     },
 }

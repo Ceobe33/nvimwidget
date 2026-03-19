@@ -90,6 +90,12 @@ filetype plugin on
 runtime macros/matchit.vim
 
 set modifiable
+"" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+
+echo "nvim is set modifiable over cfg keymaps.vim"
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,

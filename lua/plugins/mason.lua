@@ -1,5 +1,5 @@
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     opts = function(_, opts)
         table.insert(opts.ensure_installed, "prettier")

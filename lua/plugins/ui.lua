@@ -1,4 +1,3 @@
-Snacks = require("snacks")
 return {
     {
         "folke/snacks.nvim",
@@ -13,7 +12,13 @@ return {
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
             words = { enabled = true },
-
+            explorer = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
+            scope = { enabled = true },
+            image = {},
+            scroll = { enabled = true },
             dashboard = {
                 enabled = true,
 
@@ -99,7 +104,7 @@ return {
     },
     {
         "adelarsq/image_preview.nvim",
-        -- enabled = false,
+        enabled = false,
         event = "VeryLazy",
         config = function()
             require("image_preview").setup()
@@ -108,9 +113,9 @@ return {
     -- Soothing pastel theme for (Neo)vim
     {
         "catppuccin/nvim",
+        enabled = false,
         name = "catppuccin",
         priority = 1000,
-        --enabled = false
     },
     -- to fixget_signs( tbl_map ) error
     {
@@ -351,7 +356,7 @@ return {
 
     -- active indent guide and indent text objects
     {
-        "echasnovski/mini.indentscope",
+        "nvim-mini/mini.indentscope",
         version = false, -- wait till new 0.7.0 release to put it back on semver
         event = { "BufReadPre", "BufNewFile" },
         opts = {

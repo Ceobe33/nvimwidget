@@ -30,7 +30,7 @@ Map("i", "<C-P>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 Map("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 -- Use <c-j> to trigger snippets
-Map("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+Map("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)", { desc = "trigger snippets" })
 -- Use <c-space> to trigger completion
 Map("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
 
@@ -155,18 +155,26 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 -- Show all diagnostics
+opts.desc = "Show all diagnostics"
 Map("n", "<space>ca", ":<C-u>CocList diagnostics<cr>", opts)
 -- Manage extensions
+opts.desc = "Manage extensions"
 Map("n", "<space>ce", ":<C-u>CocList extensions<cr>", opts)
 -- Show commands
+opts.desc = "Show commands"
 Map("n", "<space>cc", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-Map("n", "<space>co", ":<C-u>CocList outline<cr>", opts)
+opts.desc = "Find symbol of current document"
+Map("n", "<space>co", ":CocOutline<cr>", opts)
 -- Search workspace symbols
+opts.desc = "Search workspace symbols"
 Map("n", "<space>cs", ":<C-u>CocList -I symbols<cr>", opts)
 -- Do default action for next item
+opts.desc = "Do default action for next item"
 Map("n", "<space>cj", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item
+opts.desc = "Do default action for previous item"
 Map("n", "<space>ck", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
+opts.desc = "Resume latest coc list"
 Map("n", "<space>cp", ":<C-u>CocListResume<cr>", opts)

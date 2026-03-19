@@ -28,6 +28,7 @@ return {
     },
     {
         "Badhi/nvim-treesitter-cpp-tools",
+        enabled = false,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         -- Optional: Configuration
         opts = function()

@@ -1,5 +1,11 @@
 return {
     {
+        "neovim/nvim-lspconfig",
+        config = function()
+            vim.lsp.enable("lua_ls")
+        end,
+    },
+    {
         "pechorin/any-jump.vim",
     },
     {
@@ -11,7 +17,6 @@ return {
     },
     { -- coc
         "neoclide/coc.nvim",
-        -- TODO: have clang syntax error
         -- enabled = false,
         branch = "release",
 
