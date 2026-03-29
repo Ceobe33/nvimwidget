@@ -33,3 +33,11 @@ vim.keymap.set("", "<f1>", toggle_profile)
 -- if vim.fn.filereadable(install_deps_script) == 1 then
 --     vim.cmd("silent !" .. install_deps_script)
 -- end
+
+-- vim.opt.termguicolors = true
+-- require("bufferline").setup{}
+
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { '<filetype>' },
+--   callback = function() vim.treesitter.start() end,
+-- })

@@ -4,7 +4,7 @@
     "languageserver": {
         "lua": {
             //"command": "lua-lsp",
-            "command": "lua-language-server",
+            "command": "/home/aaron/.local/share/nvim/mason/bin/lua-language-server",
             "filetypes": ["lua"],
             "rootPatterns": [".git/", "init.lua", "init.vim"]
         }

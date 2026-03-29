@@ -67,7 +67,9 @@ end
 require("lazy").setup({
     spec = {
         -- add LazyVim and import its plugins
-        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        --{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        { "LazyVim/LazyVim", version = false },
+        { "folke/lazy.nvim", version = false },
         -- { import = "lazyvim.plugins.extras.formatting.prettier" },
         {
             -- practice vim operate
@@ -79,36 +81,8 @@ require("lazy").setup({
         },
         -- import/override with your plugins
         { import = "plugins" },
-        { import = "plugins.lsp" },
+        -- { import = "plugins.lsp" },
         -- { import = "lazyvim.plugins.extras.ui.alpha" },
-        -- disabled plugins
-        -- { "lervag/vimtex", enabled = false },
-        { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-        { "nvim-mini/mini.icons", enabled = false },
-        -- basic snippet
-        { "garymjr/nvim-snippets", enabled = false },
-        { "rafamadriz/friendly-snippets", enabled = false },
-        { "saadparwaiz1/cmp_luasnip", enabled = false },
-
-        { "pechorin/any-jump.vim", enabled = false },
-        { "hrsh7th/cmp-nvim-lsp", enabled = false },
-
-        { "nvim-mini/mini.ai", enabled = false },
-        { "mfussenegger/nvim-lint", enabled = false },
-        { "SmiteshP/nvim-navic", enabled = false },
-
-        -- { "folke/lazydev.nvim", enabled = false },
-        { "folke/ts-comments.nvim", enabled = false },
-
-        { "hrsh7th/nvim-cmp", enabled = false },
-        -- { "williamboman/mason-lspconfig.nvim", enabled = false },
-        { "folke/persistence.nvim", enabled = false },
-        { "windwp/nvim-ts-autotag", enabled = false },
-        { "tyru/open-browser.vim", enabled = false },
-        { "nvim-mini/mini.indentscope", enabled = false },
-        { "nvim-mini/mini.pairs", enabled = false },
-
-        { "goolord/alpha-nvim", enabled = false },
     },
     keys = {
         -- to use vim's repeat function of '.'
@@ -124,7 +98,7 @@ require("lazy").setup({
         lazy = false,
         -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
         -- have outdated releases, which may break your Neovim install.
-        version = false, -- always use the latest git commit
+        -- version = false, -- always use the latest git commit
         -- version = "*", -- try installing the latest stable version for plugins that support semver
         autocmds = false,
         options = false,
@@ -139,14 +113,14 @@ require("lazy").setup({
         rtp = {
             -- disable some rtp plugins
             disabled_plugins = {
-                "gzip",
-                -- "matchit",
-                -- "matchparen",
-                -- "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
+                -- "gzip",
+                -- -- "matchit",
+                -- -- "matchparen",
+                -- -- "netrwPlugin",
+                -- "tarPlugin",
+                -- "tohtml",
+                -- "tutor",
+                -- "zipPlugin",
             },
         },
     },
