@@ -1,0 +1,40 @@
+" change runtimepath is required
+set runtimepath^=~/.vim/bundle/plug.nvim
+
+call plug#begin()
+
+Plug 'chemzqm/wxapp.vim', {'dir': '~/vim-dev', 'frozen': 1}
+Plug 'Shougo/echodoc.vim'
+
+Plug 'preservim/nerdtree'
+Plug('tiagofumo/vim-nerdtree-syntax-highlight')
+Plug('mbbill/undotree')
+Plug('liuchengxu/vista.vim')
+Plug('ryanoasis/vim-devicons')
+
+""===========-- coding --===========""
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-easy-align.git'
+Plug 'windwp/nvim-autopairs'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+-- Plug 'kawre/leetcode.nvim'
+Plug 'ianding1/leetcode.vim', {['do'] = 'pip3 install pynvim keyring browser-cookie3 --user'}
+Plug'neoclide/coc.nvim', {['branch'] = 'release' }
+
+""===========-- lsp --===========""
+Plug 'nvim-treesitter/nvim-treesitter', {['dir'] = vim.fn.stdpath('data') .. '/site' }
+
+-- Unmanaged plugin (manually installed and updated)
+-- Plug '~/my-prototype-plugin'
+
+" should only be used after all plugins added by Plug command
+call plug#end()
+
+lua << EOF
+
+
+EOF
+filetype plugin indent on
+syntax on
