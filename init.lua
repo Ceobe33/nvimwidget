@@ -12,6 +12,7 @@ local function load_dir(mod)
 end
 
 local Plug = vim.fn['plug#']
+
 -- vim.cmd([[
 --   set runtimepath^=~/.vim/bundle/plug.nvim
 -- ]])

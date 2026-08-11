@@ -5,6 +5,7 @@ vim.o.tabstop = 2 -- A TAB character looks like x spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
+vim.o.clipboard = 'unnamedplus'
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -27,21 +28,37 @@ function Map(mode, lf, rf, setting)
 end
 
 -- ref https://neovim.io/doc/user/terminal/
-Map('t', '<Esc>', '<C-\\><C-n>')
-Map({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')
-Map({'t', 'i'}, '<A-j>', '<C-\\><C-n><C-w>j')
-Map({'t', 'i'}, '<A-k>', '<C-\\><C-n><C-w>k')
-Map({'t', 'i'}, '<A-l>', '<C-\\><C-n><C-w>l')
-Map('n', '<A-h>', '<C-w>h')
-Map('n', '<A-j>', '<C-w>j')
-Map('n', '<A-k>', '<C-w>k')
-Map('n', '<A-l>', '<C-w>l')
+-- Map('t', '<Esc>', '<C-\\><C-n>')
+
+--===========-- Clip board --===========--
+
+
+--===========-- Navigation --===========--
+if 1 == vim.fn.has('mac') then
+  Map({'t', 'i', 'n'}, '<C-h>', '<Esc><C-w>h')
+  Map({'t', 'i', 'n'}, '<C-j>', '<Esc><C-w>j')
+  Map({'t', 'i', 'n'}, '<C-k>', '<Esc><C-w>k')
+  Map({'t', 'i', 'n'}, '<C-l>', '<Esc><C-w>l')
+else
+  Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
+  Map({'t', 'i', 'n'}, '<A-j>', '<C-\\><C-n><C-w>j')
+  Map({'t', 'i', 'n'}, '<A-k>', '<C-\\><C-n><C-w>k')
+  Map({'t', 'i', 'n'}, '<A-l>', '<C-\\><C-n><C-w>l')
+end
+Map('n', '<C-q>', '<C-w>q')
 
 Map('n', '<Esc>', ':noh<CR>', {silent = true, desc = 'clear search highlighting'})
 Map('n', '<A-p>', '<C-w>p', {silent = true, desc = 'go to previous(last accessed) window'})
 
 --===========-- window size --===========--
-Map('n', '<A-Up>', ':resize +5<CR>')
-Map('n', '<A-Down>', ':resize -5<CR>')
-Map('n', '<A-Left>', ':vertical resize -5<CR>')
-Map('n', '<A-Right>', ':vertical resize +5<CR>')
+if 1 == vim.fn.has('mac') then
+  Map('n', '<C-Up>', ':resize +5<CR>')
+  Map('n', '<C-Down>', ':resize -5<CR>')
+  Map('n', '<C-Left>', ':vertical resize -5<CR>')
+  Map('n', '<C-Right>', ':vertical resize +5<CR>')
+else
+  Map('n', '<A-Up>', ':resize +5<CR>')
+  Map('n', '<A-Down>', ':resize -5<CR>')
+  Map('n', '<A-Left>', ':vertical resize -5<CR>')
+  Map('n', '<A-Right>', ':vertical resize +5<CR>')
+end

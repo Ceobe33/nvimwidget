@@ -24,3 +24,5 @@ for pkg in "${PACKAGES[@]}"; do
         echo "$pkg is already installed."
     fi
 done
+# MacOS 
+# brew install node neovim
