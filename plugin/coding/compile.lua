@@ -1,3 +1,6 @@
+if true then
+  return
+end
 -- Leaving this empty will use the default options from the
  -- `nvim-lspconfig` plugin. See |:h vim.lsp.Config| for all
  -- available fields, and see below for more customization.

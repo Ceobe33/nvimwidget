@@ -13,8 +13,9 @@ vim.g.coc_default_semantic_highlight_groups = 1
 
 vim.opt.encoding = 'utf-8'
 
-vim.g.leetcode_browser = 'chrome'
-vim.g.leetcode_solution_filetype = 'cpp'
+-- vim.cmd([[
+-- let g:coc_node_path = trim(system('which node'))
+-- ]])
 
 -- @param mode string
 -- @param lf string keys
@@ -28,7 +29,7 @@ function Map(mode, lf, rf, setting)
 end
 
 -- ref https://neovim.io/doc/user/terminal/
--- Map('t', '<Esc>', '<C-\\><C-n>')
+Map('t', '<Esc>', '<C-\\><C-n>')
 
 --===========-- Clip board --===========--
 
@@ -39,11 +40,13 @@ if 1 == vim.fn.has('mac') then
   Map({'t', 'i', 'n'}, '<C-j>', '<Esc><C-w>j')
   Map({'t', 'i', 'n'}, '<C-k>', '<Esc><C-w>k')
   Map({'t', 'i', 'n'}, '<C-l>', '<Esc><C-w>l')
+  Map({'t', 'i', 'n'}, '<C-p>', '<Esc><C-w>p')
 else
   Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
   Map({'t', 'i', 'n'}, '<A-j>', '<C-\\><C-n><C-w>j')
   Map({'t', 'i', 'n'}, '<A-k>', '<C-\\><C-n><C-w>k')
   Map({'t', 'i', 'n'}, '<A-l>', '<C-\\><C-n><C-w>l')
+  Map({'t', 'i', 'n'}, '<A-p>', '<C-\\><C-n><C-w>p')
 end
 Map('n', '<C-q>', '<C-w>q')
 

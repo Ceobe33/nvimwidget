@@ -42,17 +42,29 @@ Plug('mbbill/undotree')
 Plug('liuchengxu/vista.vim')
 Plug('ryanoasis/vim-devicons')
 
+--===========-- markdown --===========--
+Plug('OXY2DEV/markview.nvim')
+
+
 --===========-- colorscheme --===========--
 Plug('rebelot/kanagawa.nvim')
 
 --===========-- coding --===========--
+-- show function name at first line where the cursor at 
+Plug('nvim-treesitter/nvim-treesitter-context')
+
 Plug('axieax/urlview.nvim')
 -- Any valid git URL is allowed
 Plug('https://github.com/junegunn/vim-easy-align.git')
-Plug('windwp/nvim-autopairs')
+-- Plug('windwp/nvim-autopairs')
+Plug('jiangmiao/auto-pairs')
+
 Plug('kdheepak/lazygit.nvim')
-Plug('SirVer/ultisnips')
+
+---@see required by ultisnips
 Plug('honza/vim-snippets')
+Plug('SirVer/ultisnips')
+
 Plug('kawre/leetcode.nvim')
 -- [TODO:]its didn't work of do function
 -- Plug('ianding1/leetcode.vim', {['do'] = function ()
@@ -67,10 +79,11 @@ Plug('neoclide/coc.nvim', {['branch'] = 'release' })
 Plug('SmiteshP/nvim-navic')
 
 --===========-- lsp --===========--
---Plug('nvim-treesitter/nvim-treesitter', {['dir'] = vim.fn.stdpath('data') .. '/site' })
+Plug('nvim-treesitter/nvim-treesitter')
 Plug('https://github.com/tree-sitter/tree-sitter-cli.git')
+Plug('mason-org/mason.nvim')
 -- required by `nvim-navic`
---Plug('neovim/nvim-lspconfig')
+Plug('neovim/nvim-lspconfig')
 
 -- Unmanaged plugin (manually installed and updated)
 -- Plug('~/my-prototype-plugin')

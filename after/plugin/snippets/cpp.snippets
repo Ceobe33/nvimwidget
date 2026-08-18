@@ -35,16 +35,15 @@ snippet ponce "#pragma once include guard"
 
 endsnippet
 
+# #include <...>
 snippet inc
-#include ${0}
+#include <${1:iostream}>
 endsnippet
 
-snippet main
-int main(int argc, char *argv[])
-{
-	${0}
-	return 0;
-}
+snippet ndef
+#ifndef __$1_H__
+#define __${1:SYMBOL}_H__
+#endif /* ifndef __$1_H__ */
 endsnippet
 
 snippet forc "general for loop (for)"

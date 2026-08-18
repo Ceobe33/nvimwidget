@@ -1,22 +1,12 @@
 {
     "coc.preferences.formatOnSave": false,
     "list.previousKeymap": "<C-p>",
-    "languageserver": {
-        "lua": {
-            //"command": "lua-lsp",
-            "command": "/home/aaron/.local/share/nvim/mason/bin/lua-language-server",
-            "filetypes": ["lua"],
-            "rootPatterns": [".git/", "init.lua", "init.vim"]
-        }
-        // "clangd": {
-        //     "command": "clangd",
-        //     "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-        //     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-        // }
-    },
+
+    
     "clangd.path": "/usr/bin/clangd",
-    // "clangd.arguments": ["--background-index", "--clang-tidy"],
-    // "clangd.fallbackFlags": ["-std=c++23"],
-    // default is 5,000
-    "yaml.maxItemsComputed": 5000
+    "clangd.enabled": true,
+    "json.schemaDownload.trustedDomains": {
+      "https://raw.githubusercontent.com": true
+    }
+
 }
