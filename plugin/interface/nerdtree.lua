@@ -5,7 +5,8 @@ vim.g.NERDTreeFileLines = 0
 vim.g.NERDTreeChDirMode = 2
 -- vim.g.NERDTreeShowLinesNumbers = 1
 
-vim.keymap.set('n', '<leader>n', ':NERDTreeToggle<CR>')
+Map('n', '<leader>n', ':NERDTreeToggle<CR>')
+Map('n', '<leader>nf', ':NERDTreeFind<CR>')
 
 vim.cmd([[
   " Start NERDTree when Vim is started without file arguments.
