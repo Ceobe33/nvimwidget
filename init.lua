@@ -38,7 +38,7 @@ Plug('preservim/nerdtree', {['do'] = function ()
 end })
 Plug('tiagofumo/vim-nerdtree-syntax-highlight')
 Plug('mbbill/undotree')
-Plug('liuchengxu/vista.vim')
+--Plug('liuchengxu/vista.vim')
 Plug('ryanoasis/vim-devicons')
 
 --===========-- colorscheme --===========--
