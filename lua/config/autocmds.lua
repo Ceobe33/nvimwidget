@@ -1,38 +1,38 @@
 -------------- https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3 --------------
 --- ripgrep
-vim.cmd([[
-set grepprg=ag\ --vimgrep
-
-function! Grep(...)
-	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
-endfunction
-
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
-command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
-
-cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
-cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
-
-augroup quickfix
-	autocmd!
-	autocmd QuickFixCmdPost cgetexpr cwindow
-	autocmd QuickFixCmdPost lgetexpr lwindow
-augroup END
-]])
+-- vim.cmd([[
+-- set grepprg=ag\ --vimgrep
+--
+-- function! Grep(...)
+-- 	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+-- endfunction
+--
+-- command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+-- command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+--
+-- cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+-- cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+--
+-- augroup quickfix
+-- 	autocmd!
+-- 	autocmd QuickFixCmdPost cgetexpr cwindow
+-- 	autocmd QuickFixCmdPost lgetexpr lwindow
+-- augroup END
+-- ]])
 -------------- https://github.com/liuchengxu/vista.vim.git --------------
-vim.cmd([[
-function! NearestMethodOrFunction() abort
+if 0 == vim.fn.has('termux') then
+  vim.cmd([[
+  function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-]])
+  endfunction
+  set statusline+=%{NearestMethodOrFunction()}
+  " By default vista.vim never run if you don't call it explicitly.
+  "
+  " If you want to show the nearest function in your statusline automatically,
+  " you can add the following line to your vimrc
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+  ]])
+end
 
 -------------- save current buffer when lose focus --------------
 vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {

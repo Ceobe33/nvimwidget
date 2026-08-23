@@ -1,5 +1,8 @@
 # neovim config
 
+## issues
+
+if `gx` couldn't open url, close nvim and `rm -rf ~/.local/state/nvim` to clear cache
 ## config
 
 need to put this repo into

@@ -28,6 +28,7 @@ Plug('junegunn/fzf', { ['dir'] = '~/.fzf', ['do'] = './install --all' })
 Plug('junegunn/fzf', { ['do'] = function()
   vim.fn['fzf#install']()
 end })
+-- Plug('axieax/urlview.nvim')
 
 --===========-- interface --===========--
 Plug('Shougo/vimproc.vim', { ['do'] = 'make'})
@@ -42,6 +43,7 @@ Plug('mbbill/undotree')
 --Plug('liuchengxu/vista.vim')
 Plug('ryanoasis/vim-devicons')
 
+Plug('Toprun123/PicVim')
 --===========-- markdown --===========--
 Plug('OXY2DEV/markview.nvim')
 
@@ -53,7 +55,6 @@ Plug('rebelot/kanagawa.nvim')
 -- show function name at first line where the cursor at 
 Plug('nvim-treesitter/nvim-treesitter-context')
 
-Plug('axieax/urlview.nvim')
 -- Any valid git URL is allowed
 Plug('https://github.com/junegunn/vim-easy-align.git')
 -- Plug('windwp/nvim-autopairs')
