@@ -61,7 +61,7 @@ if 1 ~= vim.fn.has('termux') then
 Plug('Toprun123/PicVim')
 end
 --===========-- markdown --===========--
-Plug('OXY2DEV/markview.nvim')
+-- Plug('OXY2DEV/markview.nvim')
 
 
 --===========-- colorscheme --===========--
