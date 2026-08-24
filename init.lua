@@ -29,6 +29,8 @@ Plug('junegunn/fzf', { ['do'] = function()
   vim.fn['fzf#install']()
 end })
 
+Plug('Toprun123/PicVim')
+
 --===========-- interface --===========--
 Plug('Shougo/vimproc.vim', { ['do'] = 'make'})
 -- On-demand loading: loaded when the specified command is executed
@@ -38,10 +40,21 @@ Plug('preservim/nerdtree', {['do'] = function ()
 	vim.o.relativenumber = true
 end })
 Plug('tiagofumo/vim-nerdtree-syntax-highlight')
-Plug('mbbill/undotree')
 Plug('liuchengxu/vista.vim')
 Plug('ryanoasis/vim-devicons')
 
+if vim.fn.has('nvim') == 1 then
+-- required by telescope
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim')
+
+Plug('debugloop/telescope-undo.nvim')
+else
+  -- vim version only support vsplit feature
+  -- Plug('mbbill/undotree')
+  Plug('jiaoshijie/undotree')
+
+end
 --===========-- markdown --===========--
 Plug('OXY2DEV/markview.nvim')
 

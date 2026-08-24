@@ -49,6 +49,9 @@ vim.lsp.config('lua_ls', {
         },
       })
     end,
+    window = {
+      border = 'rounded',
+    },
     settings = {
       Lua = {},
     },

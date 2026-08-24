@@ -6,7 +6,8 @@
     "clangd.path": "/usr/bin/clangd",
     "clangd.enabled": true,
     "json.schemaDownload.trustedDomains": {
-      "https://raw.githubusercontent.com": true
+      "https://raw.githubusercontent.com": true,
+      "https://www.schemastore.org": true
     }
 
 }
