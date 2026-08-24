@@ -1,3 +1,40 @@
+snippet pl
+{% post_link $1 %}
+endsnippet
+# post audio
+snippet pa
+{% aplayer "${1:title}" "${2:youge}" "${3:url}" %}
+endsnippet
+
+snippet r
+🔴
+endsnippet
+snippet t
+#${0:Career|Extrapolation}
+${1:${Career}|${Extrapolation}}
+endsnippet
+snippet trm
+The real McCoy
+endsnippet
+snippet cl
+<span style="color:$1">$2</span>
+endsnippet
+
+snippet -yx
+---
+date: 
+update: `!v strftime("%Y-%m-%d %H:%M")`
+title: 
+cover: 0.jpg
+description: 
+tags: [Career, The real McCoy]
+categories: [  ]
+source: 
+copyright_author: 幽哥
+copyright_url: 
+place: 
+---
+endsnippet
 snippet 01
 01. 学历不重要？能力更重要？
 endsnippet
@@ -87,27 +124,5 @@ snippet 29
 endsnippet
 snippet 30
 30. 职场互动
-endsnippet
-
-snippet pl
-{% post_link $1 %}
-endsnippet
-# post audio
-snippet pa
-{% aplayer "${1:title}" "${2:youge}" "${3:url}" %}
-endsnippet
-
-snippet r
-🔴
-endsnippet
-snippet t
-#${0:Career|Extrapolation}
-${1:${Career}|${Extrapolation}}
-endsnippet
-snippet trm
-The real McCoy
-endsnippet
-snippet c
-<span style="color:$1">$2</span>
 endsnippet
 

@@ -20,19 +20,19 @@
 -- augroup END
 -- ]])
 -------------- https://github.com/liuchengxu/vista.vim.git --------------
-vim.cmd([[
-function! NearestMethodOrFunction() abort
+if 0 == vim.fn.has('termux') then
+  vim.cmd([[
+  function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-]])
+  endfunction
+  set statusline+=%{NearestMethodOrFunction()}
+  " By default vista.vim never run if you don't call it explicitly.
+  "
+  " If you want to show the nearest function in your statusline automatically,
+  " you can add the following line to your vimrc
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+  ]])
+end
 
 -------------- save current buffer when lose focus --------------
 vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {

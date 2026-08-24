@@ -1,7 +1,6 @@
 plugin/packer_compiled.lua
 
-node_modules/
+node_modules
 
 tags
-/plugin/coding/ctag.lua
-/NERD_tree_tab*
+/NERD*
