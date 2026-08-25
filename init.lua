@@ -30,6 +30,7 @@ Plug('junegunn/fzf', { ['do'] = function()
 end })
 -- Plug('axieax/urlview.nvim')
 
+-- NOTICE: imagemagick didn't support old MacOS version example. 13
 Plug('Toprun123/PicVim')
 
 --===========-- interface --===========--

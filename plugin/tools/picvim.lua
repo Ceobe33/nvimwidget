@@ -1,7 +1,5 @@
 
-local picvim = require('picvim')
-if picvim then
-  picvim.setup()
-else
-  print("plese :PlugInstall to install PicVim")
+local exist, mod = pcall(require, 'picvim')
+if exist then
+  mod.setup()
 end
