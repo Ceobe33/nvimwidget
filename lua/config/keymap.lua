@@ -23,6 +23,9 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     -- max_height = 30,
   }
 )
+  Map({'t', 'i', 'n'}, '<C-p>', '<Esc><C-w>p')
+  Map('n', '<A-Up>', ':resize +5<CR>')
+  Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
 -- vim.cmd([[
 -- let g:coc_node_path = trim(system('which node'))
 -- ]])
