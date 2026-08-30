@@ -13,19 +13,8 @@ vim.g.coc_default_semantic_highlight_groups = 1
 
 vim.opt.encoding = 'utf-8'
 
--- 设置 hover 浮动窗口的边框
-local orig_hover = vim.lsp.handlers["textDocument/hover"]
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  orig_hover,
-  {
-    border = "rounded",   -- 可选: "single", "double", "rounded", "shadow", 或自定义数组
-    -- max_width = 80,
-    -- max_height = 30,
-  }
-)
-  Map({'t', 'i', 'n'}, '<C-p>', '<Esc><C-w>p')
-  Map('n', '<A-Up>', ':resize +5<CR>')
-  Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
+vim.o.winborder = 'rounded' -- Options: 'single', 'double', 'rounded', 'solid', 'shadow', 'none'
+
 -- vim.cmd([[
 -- let g:coc_node_path = trim(system('which node'))
 -- ]])
