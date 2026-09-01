@@ -23,9 +23,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     -- max_height = 30,
   }
 )
-  Map({'t', 'i', 'n'}, '<C-p>', '<Esc><C-w>p')
-  Map('n', '<A-Up>', ':resize +5<CR>')
-  Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
 -- vim.cmd([[
 -- let g:coc_node_path = trim(system('which node'))
 -- ]])
@@ -42,24 +39,30 @@ function Map(mode, lf, rf, setting)
 end
 
 -- ref https://neovim.io/doc/user/terminal/
-Map('t', '<Esc>', '<C-\\><C-n>')
+Map('t', '<Esc><Esc>', '<C-\\><C-n>')
 
 --===========-- Clip board --===========--
 
 
+--===========-- Buffer --===========--
+
+Map({'n'}, '<leader>b[', ':bprevious<CR>')
+Map({'n'}, '<leader>b]', ':bnext<CR>')
+Map({'n'}, '<leader>b}', ':bNext<CR>')
+
 --===========-- Navigation --===========--
 if 1 == vim.fn.has('mac') then
-  Map({'t', 'i', 'n'}, '<C-h>', '<Esc><C-w>h')
-  Map({'t', 'i', 'n'}, '<C-j>', '<Esc><C-w>j')
-  Map({'t', 'i', 'n'}, '<C-k>', '<Esc><C-w>k')
-  Map({'t', 'i', 'n'}, '<C-l>', '<Esc><C-w>l')
-  Map({'t', 'i', 'n'}, '<C-p>', '<Esc><C-w>p')
+  Map({'t', 'n'}, '<C-h>', '<Esc><C-w>h')
+  Map({'t', 'n'}, '<C-j>', '<Esc><C-w>j')
+  Map({'t', 'n'}, '<C-k>', '<Esc><C-w>k')
+  Map({'t', 'n'}, '<C-l>', '<Esc><C-w>l')
+  Map({'t', 'n'}, '<C-p>', '<Esc><C-w>p')
 else
-  Map({'t', 'i', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
-  Map({'t', 'i', 'n'}, '<A-j>', '<C-\\><C-n><C-w>j')
-  Map({'t', 'i', 'n'}, '<A-k>', '<C-\\><C-n><C-w>k')
-  Map({'t', 'i', 'n'}, '<A-l>', '<C-\\><C-n><C-w>l')
-  Map({'t', 'i', 'n'}, '<A-p>', '<C-\\><C-n><C-w>p')
+  Map({'t', 'n'}, '<A-h>', '<C-\\><C-n><C-w>h')
+  Map({'t', 'n'}, '<A-j>', '<C-\\><C-n><C-w>j')
+  Map({'t', 'n'}, '<A-k>', '<C-\\><C-n><C-w>k')
+  Map({'t', 'n'}, '<A-l>', '<C-\\><C-n><C-w>l')
+  Map({'t', 'n'}, '<A-p>', '<C-\\><C-n><C-w>p')
 end
 Map('n', '<C-q>', '<C-w>q')
 

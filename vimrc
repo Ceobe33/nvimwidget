@@ -107,3 +107,18 @@ let g:vimtex_compiler_method = 'latexmk'
 " Most VimTeX mappings rely on localleader and this can be changed with the
 " following line. The default is usually fine and is the symbol "\".
 let maplocalleader = ","
+
+" install vim-plug automatically
+"let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.vim//autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+call plug#begin()
+
+" List your plugins here
+Plug 'morhetz/gruvbox'
+
+call plug#end()

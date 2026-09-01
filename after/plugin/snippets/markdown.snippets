@@ -1,5 +1,16 @@
+priority 10
+global !p
+def queue_dropdown(opts):
+	if vim.eval("exists('b:ultisnips_dropdown_queue')") == '0':
+		vim.command("let b:ultisnips_dropdown_queue = []")
+	vim.command("call add(b:ultisnips_dropdown_queue, {})".format(opts))
+endglobal
+
 snippet E
 <center>End</center>
+endsnippet
+snippet p<
+《{% post_link $1 %}》
 endsnippet
 snippet pl
 {% post_link $1 %}
@@ -31,7 +42,7 @@ Million Salary
 endsnippet
 snippet -yx
 ---
-date: 
+date: $1 
 update: `!v strftime("%Y-%m-%d %H:%M")`
 title: 
 cover: 0.jpg
@@ -42,6 +53,13 @@ copyright_author: 幽哥
 copyright_url: 
 place: 
 ---
+endsnippet
+
+#place: ${2:`!p snip.rv = 'Shanghai' queue_dropdown(['Shanghai', 'Jiangsu'])`};
+#account: ${3:`!p snip.rv = 'JumpFrog' queue_dropdown(['JumpFrog', 'Shishang'])`};
+
+snippet 00
+00. 必知必会
 endsnippet
 snippet 01
 01. 学历不重要？能力更重要？

@@ -31,7 +31,13 @@ end })
 -- Plug('axieax/urlview.nvim')
 
 -- NOTICE: imagemagick didn't support old MacOS version example. 13
+if 1 ~= vim.fn.has('termux') then
 Plug('Toprun123/PicVim')
+end
+
+-- rename
+-- required by telescope, nvim-spectre
+Plug 'nvim-pack/nvim-spectre'
 
 --===========-- interface --===========--
 Plug('Shougo/vimproc.vim', { ['do'] = 'make'})
@@ -45,22 +51,15 @@ Plug('tiagofumo/vim-nerdtree-syntax-highlight')
 Plug('liuchengxu/vista.vim')
 Plug('ryanoasis/vim-devicons')
 
-if vim.fn.has('nvim') == 1 then
--- required by telescope
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 
 Plug('debugloop/telescope-undo.nvim')
-else
   -- vim version only support vsplit feature
   -- Plug('mbbill/undotree')
-  Plug('jiaoshijie/undotree')
+  -- Plug('jiaoshijie/undotree')
 
-end
 
-if 1 ~= vim.fn.has('termux') then
-Plug('Toprun123/PicVim')
-end
 --===========-- markdown --===========--
 -- Plug('OXY2DEV/markview.nvim')
 
@@ -69,6 +68,10 @@ end
 Plug('rebelot/kanagawa.nvim')
 
 --===========-- coding --===========--
+-- folding 
+Plug('kevinhwang91/promise-async')
+Plug('kevinhwang91/nvim-ufo')
+
 -- show function name at first line where the cursor at 
 Plug('nvim-treesitter/nvim-treesitter-context')
 
