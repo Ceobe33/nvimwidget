@@ -21,7 +21,12 @@ endsnippet
 snippet pa
 {% aplayer "${1:title}" "${2:youge}" "${3:url}" %}
 endsnippet
-
+snippet pd
+{% dplayer "url=${1}" %}
+endsnippet
+#{% asset_path filename %}
+#{% asset_img [class names] slug [width] [height] [title text [alt text]] %}
+#{% asset_link filename [title] [escape] %}
 snippet r
 🔴
 endsnippet
@@ -48,15 +53,19 @@ date: $1
 update: `!v strftime("%Y-%m-%d %H:%M")`
 title: 
 cover: 0.jpg
-description: 
 tags: [Career]
 categories: [  ]
 copyright_author: 幽哥
 copyright_url: 
-place: 
+description: 
+account: JumpFrog
+place: Shanghai
 ---
 endsnippet
 
+snippet in
+Internal Referral
+endsnippet
 #place: ${2:`!p snip.rv = 'Shanghai' queue_dropdown(['Shanghai', 'Jiangsu'])`};
 #account: ${3:`!p snip.rv = 'JumpFrog' queue_dropdown(['JumpFrog', 'Shishang'])`};
 

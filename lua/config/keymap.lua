@@ -7,6 +7,9 @@ vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
 vim.o.clipboard = 'unnamedplus'
 
+vim.opt.ignorecase = true -- 默认搜索不区分大小写
+vim.opt.smartcase = true  -- 如果搜索词包含大写字母，则切换为区分大小写
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.g.coc_default_semantic_highlight_groups = 1

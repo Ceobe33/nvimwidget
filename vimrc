@@ -8,6 +8,9 @@ set softtabstop=2          " Number of spaces inserted instead of a TAB characte
 set shiftwidth=2           " Number of spaces inserted when indenting
 set clipboard=unnamedplus
 
+set ignorecase
+set smartcase
+
 set number                 " 显示行号
 set relativenumber         " 显示相对行号
 "let g:coc_default_semantic_highlight_groups = 1

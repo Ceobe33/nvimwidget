@@ -19,6 +19,15 @@
 -- 	autocmd QuickFixCmdPost lgetexpr lwindow
 -- augroup END
 -- ]])
+-------------- formatting --------------
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"c", "cpp", "h", "hpp"},
+  callback = function()
+    if vim.fn.executable('clang-format') == 1 then
+      vim.bo.equalprg = "clang-format"
+    end
+  end
+})
 -------------- https://github.com/liuchengxu/vista.vim.git --------------
 if 0 == vim.fn.has('termux') then
   vim.cmd([[
