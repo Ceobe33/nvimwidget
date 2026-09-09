@@ -21,7 +21,7 @@
 -- ]])
 -------------- formatting --------------
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"c", "cpp", "h", "hpp"},
+  pattern = {"c","cc","cxx", "cpp", "h", "hpp"},
   callback = function()
     if vim.fn.executable('clang-format') == 1 then
       vim.bo.equalprg = "clang-format"
