@@ -5,19 +5,56 @@ vim.g.NERDTreeFileLines = 0
 -- see :h NERDTreeChDirMode
 vim.g.NERDTreeChDirMode = 2
 -- vim.g.NERDTreeShowLinesNumbers = 1
+-- show hidden file, disable or noisy
+-- vim.g.NERDTreeShowHidden = true
+-- vim.g.NERDTreeMinimalUI = true
+-- default is true? or the [false] mimimalUI cause
+-- vim.g.NERDTreeDirArrows = true
 
 Map('n', '<leader>n', ':NERDTreeToggle<CR>')
 Map('n', '<leader>nf', ':NERDTreeFind<CR>')
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "nerdtree",
+    callback = function()
+        vim.opt_local.number = true
+        vim.opt_local.relativenumber = true
+    end,
+})
+
+local nerdtree_group = vim.api.nvim_create_augroup("NERDTreeAutoOpen", {
+    clear = true,
+})
+
+-- 标记 stdin 输入
+vim.api.nvim_create_autocmd("StdinReadPre", {
+    group = nerdtree_group,
+    pattern = "*",
+    callback = function()
+        vim.g.std_in = 1
+    end,
+})
+
+-- 无文件启动时打开 NERDTree
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = nerdtree_group,
+    pattern = "*",
+    callback = function()
+        if vim.fn.argc() == 0 and vim.g.std_in == nil then
+            vim.cmd("NERDTree")
+        end
+    end,
+})
 vim.cmd([[
   " Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+"autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 ]])
+
 
 ---------------------- UndoTree ----------------------
 if vim.fn.has('nvim') == 1 then

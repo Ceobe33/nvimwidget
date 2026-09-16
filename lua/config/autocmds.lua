@@ -50,15 +50,6 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
 })
 
 
--------------- when enter session reopen nerdtree if opened --------------
-vim.cmd([[
-  autocmd VimEnter * NERDTreeFind | wincmd p
-  autocmd BufEnter NERD_* setlocal nu rnu
-]])
--- vim.cmd([[
--- autocmd StdinReadPre * let s:std_in=1
--- autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeFind | endif
--- ]])
 -------------- create dir when it isn't exsit --------------
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),

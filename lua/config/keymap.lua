@@ -18,6 +18,12 @@ vim.opt.encoding = 'utf-8'
 
 vim.o.winborder = 'rounded' -- Options: 'single', 'double', 'rounded', 'solid', 'shadow', 'none'
 
+vim.opt.signcolumn = "yes:1"
+-- highlighting line where the cursor at
+vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+
 -- vim.cmd([[
 -- let g:coc_node_path = trim(system('which node'))
 -- ]])

@@ -3,4 +3,5 @@ plugin/packer_compiled.lua
 node_modules
 
 tags
-/NERD*
+NERD*
+.DS_Store
