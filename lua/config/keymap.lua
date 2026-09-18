@@ -12,11 +12,15 @@ vim.opt.smartcase = true  -- 如果搜索词包含大写字母，则切换为区
 
 vim.o.number = true
 vim.o.relativenumber = true
-vim.g.coc_default_semantic_highlight_groups = 1
 
 vim.opt.encoding = 'utf-8'
 
-vim.o.winborder = 'rounded' -- Options: 'single', 'double', 'rounded', 'solid', 'shadow', 'none'
+-- Options: 'single', 'double', 'rounded', 'solid', 'shadow', 'none'
+vim.o.winborder = 'rounded'
+-- max row for suggest display
+vim.opt.pumheight = 8
+-- vim.opt.pumwidth = 30
+-- vim.opt.completeopt = { "menuone", "noselect" }
 
 vim.opt.signcolumn = "yes:1"
 -- highlighting line where the cursor at

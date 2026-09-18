@@ -1,19 +1,23 @@
 {
     "coc.preferences.formatOnSave": false,
     "list.previousKeymap": "<C-p>",
+    "semanticTokens.enable": true,
     "suggest.floatConfig": {
-      "border": true,
-      "shadow": true
+      "winblend": 30,
+      "highlight": "CocFloating",
+      "borderhighlight": "CocFloatBorder"
+
     },
     "hover.floatConfig": {
-      "border": true
     },
     "signature.floatConfig": {
-      "border": true
     },
+    "signature.preferShownAbove": false,
     
-    "clangd.path": "/usr/bin/clangd",
+    "clangd.path": "/Users/a1/.local/share/nvim/mason/bin/clangd",
     "clangd.enabled": true,
+    "clangd.arguments": ["--background-index", "--clang-tidy"],
+    "clangd.fallbackFlags": ["-std=c++23"],
     "json.schemaDownload.trustedDomains": {
       "https://raw.githubusercontent.com": true,
       "https://www.schemastore.org": true,

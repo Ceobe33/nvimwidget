@@ -40,6 +40,10 @@ end
 Plug 'nvim-pack/nvim-spectre'
 
 --===========-- interface --===========--
+
+-- Create Color Code in neovim.
+Plug('uga-rosa/ccc.nvim')
+
 Plug('Shougo/vimproc.vim', { ['do'] = 'make'})
 -- On-demand loading: loaded when the specified command is executed
 -- Plug('preservim/nerdtree', {['on'] = 'NERDTreeToggle', ['do'] = function ()
@@ -93,7 +97,8 @@ Plug('kawre/leetcode.nvim')
   vim.fn.system {'npm', 'install -g leetcode-cli'}
 -- end
 -- })
-Plug('neoclide/coc.nvim', {['branch'] = 'release' })
+-- Plug('neoclide/coc.nvim', {['branch'] = 'master', ['do'] = 'yarn install --frozen-lockfile' })
+Plug('Ceobe33/coc.nvim', {['branch'] = 'master', ['do'] = 'yarn install --frozen-lockfile' })
 
 -- A simple statusline/winbar component that uses LSP to show your current code context. Named after the Indian satellite navigation system.
 -- requiring `nvim-lspconfig`
